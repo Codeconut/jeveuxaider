@@ -342,6 +342,20 @@ const routeOptions = [
     },
   },
   {
+    path: '/dashboard/profiles/invitations',
+    name: 'DashboardProfilesInvitations',
+    meta: {
+      roles: ['admin'],
+    },
+  },
+  {
+    path: '/dashboard/profiles/invitations/add',
+    name: 'DashboardProfilesInvitationAdd',
+    meta: {
+      roles: ['admin'],
+    },
+  },
+  {
     path: '/dashboard/profiles/referents-regions',
     name: 'DashboardProfilesReferentsRegions',
     meta: {

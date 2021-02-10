@@ -119,6 +119,16 @@ export function fetchUsers(params, appends) {
   })
 }
 
+export function fetchInvitations(params) {
+  return request.get(`/api/invitations`, {
+    params,
+  })
+}
+
+export function addInvitation(invitation) {
+  return request.post(`/api/invitation`, invitation)
+}
+
 export const rolesList = [
   { key: 'admin', label: 'Modérateur' },
   { key: 'referent', label: 'Référent' },

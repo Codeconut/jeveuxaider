@@ -235,4 +235,8 @@ Route::group(['middleware' => ['auth:api', 'is.admin']], function () {
     Route::get('profiles/referents/departements/export', 'Api\ProfileController@exportReferentsDepartements');
     Route::get('profiles/referents/regions/export', 'Api\ProfileController@exportReferentsRegions');
     Route::get('profiles/responsables/export', 'Api\ProfileController@exportResponsables');
+
+    // INVITATIONS
+    Route::get('invitations', 'Api\InvitationController@index');
+    Route::post('invitation', 'Api\InvitationController@store');
 });
