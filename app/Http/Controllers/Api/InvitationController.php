@@ -20,7 +20,6 @@ class InvitationController extends Controller
 
     public function show(Request $request, String $token)
     {
-
         $invitation = Invitation::whereToken($token)->first();
 
         if (!$invitation) {
