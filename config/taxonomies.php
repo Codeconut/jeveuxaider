@@ -732,4 +732,22 @@ return [
         ]
     ],
 
+     /*
+    |--------------------------------------------------------------------------
+    | ROLES
+    |--------------------------------------------------------------------------
+    |
+    */
+    'roles' => [
+        "vocabulary" => "Roles",
+        "terms" => [
+            "responsable_organisation" => "Responsable d'une organisation",
+            "responsable_collectivity" => "Responsable d'une collectivité",
+            "referent_departemental" => "Référent départemental",
+            "referent_regional" => "Référent régional",
+            "superviseur" => "Superviseur réseau national",
+            "datas_analyst" => "Datas analyste",
+        ]
+    ],
+
 ];

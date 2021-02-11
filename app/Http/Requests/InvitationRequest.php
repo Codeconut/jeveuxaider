@@ -27,6 +27,8 @@ class InvitationRequest extends FormRequest
             'user_id' => 'required',
             'email' => 'email|required|unique:invitations,email',
             'role' => 'required',
+            'invitable_id' => '',
+            'invitable_type' => '',
             'properties' => ''
         ];
 

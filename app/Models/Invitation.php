@@ -21,4 +21,9 @@ class Invitation extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function invitable()
+    {
+        return $this->morphTo();
+    }
 }

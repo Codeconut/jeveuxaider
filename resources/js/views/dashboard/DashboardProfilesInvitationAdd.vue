@@ -25,20 +25,14 @@
           <el-radio-group
             v-model="form.role"
             class="radio-group-options"
-            @change="form.properties = {}"
+            @change="resetForm"
           >
-            <el-radio label="responsable_organisation"
-              >Responsable d'une organisation</el-radio
+            <el-radio
+              v-for="item in $store.getters.taxonomies.roles.terms"
+              :key="item.value"
+              :label="item.value"
+              >{{ item.label }}</el-radio
             >
-            <el-radio label="responsable_collectivity"
-              >Responsable d'une collectivité</el-radio
-            >
-            <el-radio label="referent_departemental"
-              >Référent départemental</el-radio
-            >
-            <el-radio label="referent_regional">Référent régional</el-radio>
-            <el-radio label="superviseur">Superviseur réseau national</el-radio>
-            <el-radio label="analyste">Datas analyste</el-radio>
           </el-radio-group>
         </el-form-item>
 
@@ -51,7 +45,30 @@
             utilisateur de visualiser les missions et bénévoles rattachés à
             cette organisation.
           </item-description>
-          @TODO
+          <el-form-item
+            label="Organisation"
+            prop="invitable_id"
+            class="flex-1 max-w-xl mb-7"
+          >
+            <el-select
+              v-model="form.invitable_id"
+              filterable
+              reserve-keyword
+              remote
+              :remote-method="fetchOrganisations"
+              placeholder="Nom de l'organisation"
+              :loading="loading"
+              @change="form.invitable_type = 'App\\Models\\Structure'"
+            >
+              <el-option
+                v-for="item in organisations"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
+          </el-form-item>
         </template>
 
         <template v-if="form.role == 'responsable_collectivity'">
@@ -63,7 +80,30 @@
             utilisateur de visualiser les missions et bénévoles rattachés à
             cette collectivité.
           </item-description>
-          @TODO
+          <el-form-item
+            label="Organisation"
+            prop="invitable_id"
+            class="flex-1 max-w-xl mb-7"
+          >
+            <el-select
+              v-model="form.invitable_id"
+              filterable
+              reserve-keyword
+              remote
+              :remote-method="fetchCollectivities"
+              placeholder="Nom de la collectivité"
+              :loading="loading"
+              @change="form.invitable_type = 'App\\Models\\Structure'"
+            >
+              <el-option
+                v-for="item in collectivities"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
+          </el-form-item>
         </template>
 
         <template v-if="form.role == 'superviseur'">
@@ -167,6 +207,7 @@
 <script>
 import { addInvitation } from '@/api/user'
 import ItemDescription from '@/components/forms/ItemDescription'
+import { fetchStructures } from '@/api/structure'
 
 export default {
   name: 'DashboardProfilesInvitationAdd',
@@ -174,6 +215,8 @@ export default {
   data() {
     return {
       loading: false,
+      organisations: [],
+      collectivities: [],
       form: {
         user_id: this.$store.getters.user.id,
         properties: {},
@@ -203,6 +246,37 @@ export default {
   },
   created() {},
   methods: {
+    fetchOrganisations(query) {
+      if (query !== '') {
+        this.loading = true
+        fetchStructures({
+          'filter[is_collectivity]': false,
+          'filter[search]': query,
+        }).then((response) => {
+          this.loading = false
+          this.organisations = response.data.data
+        })
+      }
+    },
+    fetchCollectivities(query) {
+      if (query !== '') {
+        this.loading = true
+        fetchStructures({
+          'filter[is_collectivity]': true,
+          'filter[search]': query,
+        }).then((response) => {
+          this.loading = false
+          this.collectivities = response.data.data
+        })
+      }
+    },
+    resetForm() {
+      this.$delete(this.form, 'invitable_id')
+      this.$delete(this.form, 'invitable_type')
+      this.$set(this.form, 'properties', {})
+      this.$set(this, 'organisations', [])
+      this.$set(this, 'collectivities', [])
+    },
     onSubmit() {
       this.loading = true
       this.$refs['invitationForm'].validate((valid) => {
