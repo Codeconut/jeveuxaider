@@ -38,6 +38,7 @@
         "vue-chartjs": "^3.5.0",
         "vue-clamp": "^0.2.2",
         "vue-click-outside": "^1.1.0",
+        "vue-clipboard2": "^0.3.1",
         "vue-content-loader": "^0.2.3",
         "vue-cropperjs": "^4.1.0",
         "vue-filter-pretty-bytes": "^0.1.4",

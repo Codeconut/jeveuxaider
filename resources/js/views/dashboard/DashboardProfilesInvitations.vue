@@ -32,20 +32,44 @@
       v-loading="loading"
       :data="tableData"
       :highlight-current-row="true"
-      @row-click="onClickedRow"
     >
+      <el-table-column width="70" align="center">
+        <el-avatar
+          class="bg-primary text-white flex items-center justify-center"
+          icon="el-icon-s-promotion"
+        >
+        </el-avatar>
+      </el-table-column>
       <el-table-column label="Email" min-width="300">
         <template slot-scope="scope">
           <div class="text-gray-900 flex items-center">
             {{ scope.row.email }}
           </div>
+          <div class="font-light text-gray-600 text-xs">
+            {{ scope.row.role | labelFromValue('roles') }}
+          </div>
         </template>
       </el-table-column>
-      <el-table-column label="Rôle" min-width="300">
+      <el-table-column label="Invitation" min-width="300">
         <template slot-scope="scope">
-          <div class="text-gray-900 flex items-center">
-            {{ scope.row.role }}
+          <div
+            v-if="scope.row.invitable"
+            class="text-gray-900 flex items-center"
+          >
+            {{ scope.row.invitable.name }}
           </div>
+          <template v-else>
+            <div v-if="scope.row.properties.referent_departemental">
+              {{
+                scope.row.properties.referent_departemental
+                  | labelFromValue('departments')
+              }}
+            </div>
+            <div v-else-if="scope.row.properties.referent_regional">
+              {{ scope.row.properties.referent_regional }}
+            </div>
+            <div v-else>N/A</div>
+          </template>
         </template>
       </el-table-column>
       <el-table-column prop="created_at" label="Crée le" min-width="150">
@@ -72,12 +96,17 @@
             Choisissez une action
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item
-                :command="{ action: 'resend', id: scope.row.id }"
+                :command="{ action: 'copy', invitation: scope.row }"
+              >
+                Copier le lien d'invitation
+              </el-dropdown-item>
+              <el-dropdown-item
+                :command="{ action: 'resend', invitation: scope.row }"
               >
                 Renvoyer le mail
               </el-dropdown-item>
               <el-dropdown-item
-                :command="{ action: 'delete', id: scope.row.id }"
+                :command="{ action: 'delete', invitation: scope.row }"
               >
                 Supprimer l'invitation
               </el-dropdown-item>
@@ -127,6 +156,34 @@ export default {
   computed: {},
   created() {},
   methods: {
+    handleCommand(command) {
+      if (command.action == 'copy') {
+        this.onCopyInvitationLink()
+      }
+      if (command.action == 'resend') {
+        this.onResendInvitationLink()
+      }
+      if (command.action == 'delete') {
+        this.onDeleteInvitation()
+      }
+    },
+    onCopyInvitationLink(invitation) {
+      this.$copyText(
+        process.env.MIX_API_BASE_URL + '/invitation/' + invitation.token
+      ).then(() => {
+        this.$message({
+          message:
+            "Le lien d'invitation a été copié dans votre presse papier (CTRL+V)",
+          type: 'success',
+        })
+      })
+    },
+    onResendInvitationLink(invitation) {
+      console.log('resend', invitation)
+    },
+    onDeleteInvitation(invitation) {
+      console.log('delete', invitation)
+    },
     fetchRows() {
       return fetchInvitations({
         ...this.query,

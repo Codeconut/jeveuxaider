@@ -41,8 +41,9 @@ Route::get('statistics/global', 'Api\StatisticsController@global');
 Route::get('api-engagement/import', 'Api\EngagementController@import');
 Route::get('api-engagement/delete', 'Api\EngagementController@delete');
 
-
 Route::post('sendinblue/contact', 'Api\SendInBlueController@store');
+
+Route::get('invitation/{token}', 'Api\InvitationController@show');
 
 Route::group(['middleware' => ['auth:api']], function () {
     // CONFIG
@@ -75,6 +76,9 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('conversations', 'Api\ConversationsController@index');
     Route::get('conversations/{conversation}/messages', 'Api\ConversationsController@messages');
     Route::post('conversations/{conversation}/messages', 'Api\MessagesController@store');
+
+    Route::post('invitation/{token}/accept', 'Api\InvitationController@accept');
+    Route::post('invitation/{token}/delete', 'Api\InvitationController@delete');
 
     Route::post('logout', 'Api\PassportController@logout');
 });

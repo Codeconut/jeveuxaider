@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\InvitationAcceptRequest;
 use App\Http\Requests\InvitationRequest;
 use App\Models\Invitation;
-use App\Profile;
-use App\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Support\Str;
 
@@ -21,19 +18,13 @@ class InvitationController extends Controller
             ->paginate(10);
     }
 
-    public function show($token)
+    public function show(Request $request, String $token)
     {
+
         $invitation = Invitation::whereToken($token)->first();
 
         if (!$invitation) {
-            return response(
-                ['errors' => [
-                'no_invitation' => [
-                    "Il n'y a pas d'invitation correspondant à ce token"
-                ]
-                ]],
-                400
-            );
+            abort(402, "L'invitation n'est plus disponible");
         }
 
         return $invitation;
@@ -42,7 +33,7 @@ class InvitationController extends Controller
     public function store(InvitationRequest $request)
     {
         do {
-            $token = Str::random();
+            $token = Str::random(32);
         } while (Invitation::where('token', $token)->first());
 
         $attributes = $request->validated();
@@ -53,42 +44,28 @@ class InvitationController extends Controller
         return $invitation;
     }
 
-    // public function accept(InvitationAcceptRequest $request)
-    // {
+    public function accept(String $token)
+    {
+        $invitation = Invitation::whereToken($token)->first();
 
-    //     $invitation = Invitation::whereEmail(request('email'))->first();
+        if (!$invitation) {
+            abort(402, "L'invitation n'est plus disponible");
+        }
 
-    //     if (!$invitation) {
-    //         return response(
-    //             ['errors' => [
-    //             'no_invitation' => [
-    //                 "Il n'y a pas d'invitation correspondant à cet email"
-    //             ]
-    //             ]], 400
-    //         );
-    //     }
+        $invitation->accept();
+        $invitation->delete();
 
-    //     $user = User::create(
-    //         [
-    //         'name' => request("email"),
-    //         'email' => request("email"),
-    //         'password' => Hash::make(request("password"))
-    //         ]
-    //     );
+        return $invitation;
+    }
 
-    //     $user->syncRoles($invitation->role);
+    public function delete(String $token)
+    {
+        $invitation = Invitation::whereToken($token)->first();
 
-    //     $profile = Profile::create($invitation->toArray());
+        if (!$invitation) {
+            abort(402, "L'invitation n'est plus disponible");
+        }
 
-    //     $user->profile()->save($profile);
-
-    //     $invitation->delete();
-
-    //     return $user;
-    // }
-
-    // public function destroy(Invitation $invitation)
-    // {
-    //     return (string) $invitation->delete();
-    // }
+        return (string) $invitation->delete();
+    }
 }

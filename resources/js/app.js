@@ -30,6 +30,7 @@ import VClamp from 'vue-clamp'
 import CKEditor from '@ckeditor/ckeditor5-vue'
 import VueMeta from 'vue-meta'
 import VueTypedJs from 'vue-typed-js'
+import VueClipboard from 'vue-clipboard2'
 
 import DefaultLayout from '@/layouts/DefaultLayout'
 import NoHeaderLayout from '@/layouts/NoHeaderLayout'
@@ -60,6 +61,7 @@ Vue.use(VueMeta, {
   refreshOnceOnNavigation: true,
 })
 
+Vue.use(VueClipboard)
 Vue.use(VueTypedJs)
 Vue.use(Vue2Filters)
 Vue.use(PortalVue)

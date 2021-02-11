@@ -129,6 +129,14 @@ export function addInvitation(invitation) {
   return request.post(`/api/invitation`, invitation)
 }
 
+export function getInvitation(token) {
+  return request.get(`/api/invitation/${token}`)
+}
+
+export function acceptInvitation(token) {
+  return request.post(`/api/invitation/${token}/accept`)
+}
+
 export const rolesList = [
   { key: 'admin', label: 'Modérateur' },
   { key: 'referent', label: 'Référent' },

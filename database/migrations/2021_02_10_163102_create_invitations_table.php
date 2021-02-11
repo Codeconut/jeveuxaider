@@ -17,7 +17,7 @@ class CreateInvitationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('email');
-            $table->string('token', 16)->unique();
+            $table->string('token', 32)->unique();
             $table->string('role');
             $table->nullableMorphs('invitable');
             $table->json('properties')->nullable();
