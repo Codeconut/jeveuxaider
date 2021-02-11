@@ -34,4 +34,20 @@ class InvitationRequest extends FormRequest
 
         return $rules;
     }
+
+    /**
+    * Get the validation messages that apply to the request.
+    *
+    * @return array
+    */
+    public function messages()
+    {
+        return [
+            'user_id.required' => 'Un utilisateur est requis',
+            'email.required' => 'Un email est requis',
+            'email.unique' => 'Une invitation a déjà été envoyée à cet email',
+            'email.email' => 'Cet email est mal formaté',
+            'role' => 'Un rôle est requis'
+        ];
+    }
 }

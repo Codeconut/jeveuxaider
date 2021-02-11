@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Invitation extends Model
 {
+    use Notifiable;
+
     protected $guarded = ['id'];
 
     protected $casts = [
@@ -19,7 +22,7 @@ class Invitation extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function invitable()

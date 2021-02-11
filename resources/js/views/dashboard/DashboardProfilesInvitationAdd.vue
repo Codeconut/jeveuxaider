@@ -81,7 +81,7 @@
             cette collectivité.
           </item-description>
           <el-form-item
-            label="Organisation"
+            label="Collectivité"
             prop="invitable_id"
             class="flex-1 max-w-xl mb-7"
           >
@@ -115,11 +115,16 @@
             utilisateur de visualiser les missions et bénévoles rattachés aux
             organisations de ce réseau national.
           </item-description>
-          <el-form-item label="Réseau national" prop="reseau_id" class="flex-1">
+          <el-form-item
+            label="Réseau national"
+            prop="invitable_id"
+            class="flex-1"
+          >
             <el-select
-              v-model="form.properties.reseau_id"
+              v-model="form.invitable_id"
               clearable
               placeholder="Sélectionner un réseau national"
+              @change="form.invitable_type = 'App\\Models\\Structure'"
             >
               <el-option
                 v-for="item in $store.getters.reseaux"
