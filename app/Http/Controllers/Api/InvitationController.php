@@ -42,6 +42,15 @@ class InvitationController extends Controller
 
     public function store(InvitationRequest $request)
     {
+
+        // Check si pas déjà responsable
+        if (in_array($request->input('role'), ['responsable_collectivity', 'responsable_organisation'])) {
+            $profile = Profile::where('email', 'ILIKE', $request->input('email'))->first();
+            if ($profile->structures->count() > 0) {
+                abort(402, "Cet email est déjà rattaché à une organisation ou une collectivité");
+            }
+        }
+
         do {
             $token = Str::random(32);
         } while (Invitation::where('token', $token)->first());

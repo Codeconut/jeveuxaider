@@ -43,6 +43,13 @@ class Invitation extends Model
     public function accept()
     {
         $profile = Profile::whereEmail($this->email)->first();
+
+        if (in_array($this->role, ['responsable_collectivity', 'responsable_organisation'])) {
+            if ($profile->structures->count() > 0) {
+                return;
+            }
+        }
+
         if ($profile) {
             // RESPONSABLE ORGANISATION
             if ($this->role == 'responsable_organisation') {
