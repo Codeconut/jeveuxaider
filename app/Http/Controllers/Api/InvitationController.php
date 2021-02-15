@@ -6,6 +6,8 @@ use App\Filters\FiltersInvitationSearch;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InvitationRequest;
 use App\Models\Invitation;
+use App\Notifications\InvitationSent;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Support\Str;
@@ -48,6 +50,20 @@ class InvitationController extends Controller
         return $invitation;
     }
 
+    public function resend(String $token)
+    {
+        $invitation = Invitation::whereToken($token)->first();
+
+        if (!$invitation) {
+            abort(402, "L'invitation n'est plus disponible");
+        }
+
+        $invitation->update(['last_sent_at' => Carbon::now()]);
+        $invitation->notify(new InvitationSent($invitation));
+
+        return $invitation;
+    }
+
     public function accept(String $token)
     {
         $invitation = Invitation::whereToken($token)->first();
@@ -55,6 +71,8 @@ class InvitationController extends Controller
         if (!$invitation) {
             abort(402, "L'invitation n'est plus disponible");
         }
+
+        // @TODO: CHECK si le  role responsable et qu'il nest pas déjà dans lorga;
 
         $invitation->accept();
         $invitation->delete();

@@ -77,6 +77,8 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('conversations/{conversation}/messages', 'Api\ConversationsController@messages');
     Route::post('conversations/{conversation}/messages', 'Api\MessagesController@store');
 
+    Route::post('invitation/{token}/resend', 'Api\InvitationController@resend');
+    Route::delete('invitation/{token}/delete', 'Api\InvitationController@delete');
     Route::post('invitation/{token}/accept', 'Api\InvitationController@accept');
     Route::post('invitation/{token}/delete', 'Api\InvitationController@delete');
 

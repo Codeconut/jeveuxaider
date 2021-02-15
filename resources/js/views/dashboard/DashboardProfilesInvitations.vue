@@ -133,7 +133,11 @@
 </template>
 
 <script>
-import { fetchInvitations } from '@/api/user'
+import {
+  fetchInvitations,
+  resendInvitation,
+  deleteInvitation,
+} from '@/api/user'
 import TableWithVolet from '@/mixins/TableWithVolet'
 import TableWithFilters from '@/mixins/TableWithFilters'
 import QueryMainSearchFilter from '@/components/QueryMainSearchFilter.vue'
@@ -180,10 +184,34 @@ export default {
       })
     },
     onResendInvitationLink(invitation) {
-      console.log('resend', invitation)
+      resendInvitation(invitation.token).then(() => {
+        this.fetchDatas()
+        this.$message({
+          message: `Un email a été renvoyé à ${invitation.email}`,
+          type: 'success',
+        })
+      })
     },
     onDeleteInvitation(invitation) {
-      console.log('delete', invitation)
+      this.$confirm(
+        `L'invitation pour ${invitation.email} sera supprimée de la plateforme. Voulez-vous continuer ?`,
+        "Supprimer l'invitation",
+        {
+          confirmButtonText: 'Supprimer',
+          confirmButtonClass: 'el-button--danger',
+          cancelButtonText: 'Annuler',
+          center: true,
+          type: 'error',
+        }
+      ).then(() => {
+        deleteInvitation(invitation.token).then(() => {
+          this.fetchDatas()
+          this.$message({
+            type: 'success',
+            message: `L'invitation pour ${invitation.email} a été supprimée.`,
+          })
+        })
+      })
     },
     fetchRows() {
       return fetchInvitations({

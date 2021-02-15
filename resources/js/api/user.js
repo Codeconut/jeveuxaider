@@ -137,6 +137,14 @@ export function acceptInvitation(token) {
   return request.post(`/api/invitation/${token}/accept`)
 }
 
+export function deleteInvitation(token) {
+  return request.delete(`/api/invitation/${token}/delete`)
+}
+
+export function resendInvitation(token) {
+  return request.post(`/api/invitation/${token}/resend`)
+}
+
 export const rolesList = [
   { key: 'admin', label: 'Modérateur' },
   { key: 'referent', label: 'Référent' },
