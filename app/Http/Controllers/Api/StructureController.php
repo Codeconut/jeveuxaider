@@ -141,6 +141,11 @@ class StructureController extends Controller
         return $structure->members;
     }
 
+    public function invitations(StructureRequest $request, Structure $structure)
+    {
+        return $structure->invitations;
+    }
+
     public function addMember(StructureInvitationRequest $request, Structure $structure)
     {
         $profile = Profile::where('email', 'ILIKE', request('email'))->first();

@@ -76,10 +76,8 @@ class InvitationController extends Controller
             abort(402, "L'invitation n'est plus disponible");
         }
 
-        // @TODO: CHECK si le  role responsable et qu'il nest pas déjà dans lorga;
-
         $invitation->accept();
-        // $invitation->delete();
+        $invitation->delete();
 
         return $invitation;
     }

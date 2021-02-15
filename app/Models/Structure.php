@@ -213,6 +213,11 @@ class Structure extends Model
         return $this->belongsToMany('App\Models\Profile', 'members')->withPivot('role');
     }
 
+    public function invitations()
+    {
+        return $this->morphMany('App\Models\Invitation', 'invitable');
+    }
+
     public function responsables()
     {
         return $this->belongsToMany('App\Models\Profile', 'members')->wherePivot('role', 'responsable');
