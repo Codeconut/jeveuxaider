@@ -263,7 +263,7 @@ class Structure extends Model
 
     public function resetResponsable(Profile $profile)
     {
-        $newResponsableProfileId = Structure::find($this->id)->members->where('id', '!=', $profile->id)->pluck('id')->first();
+        $newResponsableProfileId = $this->members->where('id', '!=', $profile->id)->pluck('id')->first();
         if ($newResponsableProfileId) {
             Mission::where('responsable_id', $profile->id)->update(['responsable_id' => $newResponsableProfileId]);
         }

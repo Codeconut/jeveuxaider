@@ -747,6 +747,7 @@ return [
             "referent_regional" => "Référent régional",
             "superviseur" => "Superviseur réseau national",
             "datas_analyst" => "Datas analyste",
+            "benevole" => "Bénévole",
         ]
     ],
 
