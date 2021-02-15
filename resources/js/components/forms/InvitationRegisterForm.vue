@@ -124,21 +124,18 @@ export default {
       this.loading = true
       this.$refs['registerInvitationForm'].validate((valid) => {
         if (valid) {
-          console.log('REGISER & ACCEPT')
-          // this.$store
-          //   .dispatch('auth/registerInvitation', {
-          //     email: this.form.email,
-          //     password: this.form.password,
-          //     first_name: this.form.first_name,
-          //     last_name: this.form.last_name,
-          //   })
-          //   .then(() => {
-          //     this.loading = false
-          //     this.$router.push('/dashboard')
-          //   })
-          //   .catch(() => {
-          //     this.loading = false
-          //   })
+          this.$store
+            .dispatch('auth/registerInvitation', {
+              form: this.form,
+              invitation: this.invitation,
+            })
+            .then(() => {
+              this.loading = false
+              this.$router.push('/dashboard')
+            })
+            .catch(() => {
+              this.loading = false
+            })
         } else {
           this.loading = false
         }

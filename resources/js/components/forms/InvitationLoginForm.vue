@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import { acceptInvitation } from '@/api/user'
+
 export default {
   name: 'InvitationLoginForm',
   props: {
@@ -87,7 +89,21 @@ export default {
       this.loading = true
       this.$refs['loginInvitationForm'].validate((valid) => {
         if (valid) {
-          console.log('LOGIN & ACCEPT')
+          this.$emit('on-processing', true)
+          this.$store
+            .dispatch('auth/login', {
+              email: this.form.email,
+              password: this.form.password,
+            })
+            .then(() => {
+              acceptInvitation(this.invitation.token).then(() => {
+                this.$router.push('/dashboard')
+                this.$store.commit('setLoading', false)
+              })
+            })
+            .catch(() => {
+              this.loading = false
+            })
         } else {
           this.loading = false
         }

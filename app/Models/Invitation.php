@@ -49,7 +49,7 @@ class Invitation extends Model
                 $this->invitable->addMember($profile, 'responsable');
             }
             // RESPONSABLE COLLECTIVITE
-            if ($this->role == 'responsable_organisation') {
+            if ($this->role == 'responsable_collectivity') {
                 $this->invitable->addMember($profile, 'responsable');
             }
             // REFERENT DEPARTEMENTAL

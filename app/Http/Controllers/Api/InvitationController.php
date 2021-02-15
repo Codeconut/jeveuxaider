@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Api;
 use App\Filters\FiltersInvitationSearch;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InvitationRequest;
+use App\Http\Requests\RegisterInvitationRequest;
 use App\Models\Invitation;
+use App\Models\Profile;
+use App\Models\User;
 use App\Notifications\InvitationSent;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Support\Str;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -75,7 +79,7 @@ class InvitationController extends Controller
         // @TODO: CHECK si le  role responsable et qu'il nest pas déjà dans lorga;
 
         $invitation->accept();
-        $invitation->delete();
+        // $invitation->delete();
 
         return $invitation;
     }
@@ -89,5 +93,31 @@ class InvitationController extends Controller
         }
 
         return (string) $invitation->delete();
+    }
+
+    public function register(RegisterInvitationRequest $request, String $token)
+    {
+        $invitation = Invitation::whereToken($token)->first();
+
+        if (!$invitation) {
+            abort(402, "L'invitation n'est plus disponible");
+        }
+
+        $user = User::create([
+            'name' => request("email"),
+            'email' => request("email"),
+            'password' => Hash::make(request("password"))
+        ]);
+
+        $profile = Profile::firstOrCreate(
+            ['email' => request('email')],
+            $request->validated()
+        );
+        $user->profile()->save($profile);
+
+        $invitation->accept();
+        $invitation->delete();
+
+        return User::with(['profile.structures', 'profile.participations'])->where('id', $user->id)->first();
     }
 }

@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 // AUTH
 Route::post('register/volontaire', 'Api\PassportController@registerVolontaire');
 Route::post('register/responsable', 'Api\PassportController@registerResponsable');
-Route::post('register/invitation', 'Api\PassportController@registerInvitation');
 Route::post('password/forgot', 'Api\PassportController@forgotPassword');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
@@ -44,6 +43,7 @@ Route::get('api-engagement/delete', 'Api\EngagementController@delete');
 Route::post('sendinblue/contact', 'Api\SendInBlueController@store');
 
 Route::get('invitation/{token}', 'Api\InvitationController@show');
+Route::post('invitation/{token}/register', 'Api\InvitationController@register');
 
 Route::group(['middleware' => ['auth:api']], function () {
     // CONFIG

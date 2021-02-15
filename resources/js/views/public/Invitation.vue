@@ -49,7 +49,7 @@
           </template>
           <template v-if="invitation.role == 'referent_regional'">
             Vous avez été invité(e) à rejoindre la région
-            <strong>{{ invitation.properties.referent_departemental }}</strong>
+            <strong>{{ invitation.properties.referent_regional }}</strong>
             en tant que référent.
           </template>
         </div>
@@ -70,8 +70,9 @@
 
         <template v-if="invitation.is_registered">
           <InvitationLoginForm
-            v-if="!$store.getters.isLogged"
+            v-if="!$store.getters.isLogged || processing"
             :invitation="invitation"
+            @on-processing="handleProcessing"
           />
           <InvitationAcceptForm v-else :invitation="invitation" />
         </template>
@@ -105,6 +106,7 @@ export default {
   data() {
     return {
       loading: false,
+      processing: false,
       invitation: null,
     }
   },
@@ -113,7 +115,11 @@ export default {
       this.invitation = response.data
     })
   },
-  methods: {},
+  methods: {
+    handleProcessing(value) {
+      this.processing = value
+    },
+  },
 }
 </script>
 

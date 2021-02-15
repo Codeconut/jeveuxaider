@@ -38,15 +38,6 @@ export function registerResponsable(
   })
 }
 
-export function registerInvitation(email, password, first_name, last_name) {
-  return request.post('/api/register/invitation', {
-    email: email.toLowerCase(),
-    password,
-    first_name,
-    last_name,
-  })
-}
-
 export function exportProfiles(params) {
   return request.get(`/api/profiles/export`, {
     responseType: 'blob',
@@ -143,6 +134,10 @@ export function deleteInvitation(token) {
 
 export function resendInvitation(token) {
   return request.post(`/api/invitation/${token}/resend`)
+}
+
+export function registerInvitation(params, token) {
+  return request.post(`/api/invitation/${token}/register`, params)
 }
 
 export const rolesList = [
