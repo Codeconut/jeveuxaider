@@ -97,8 +97,9 @@ export default {
             })
             .then(() => {
               acceptInvitation(this.invitation.token).then(() => {
-                this.$router.push('/dashboard')
-                this.$store.commit('setLoading', false)
+                this.$store.dispatch('user/get').then(() => {
+                  this.$router.push('/dashboard')
+                })
               })
             })
             .catch(() => {

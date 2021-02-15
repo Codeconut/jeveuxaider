@@ -19,7 +19,6 @@ class Invitation extends Model
 
     protected $appends = ['is_registered'];
 
-
     public function setEmailAttribute($value)
     {
         $this->attributes['email'] = strtolower($value);

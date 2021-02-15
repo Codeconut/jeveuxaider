@@ -46,7 +46,7 @@ class InvitationController extends Controller
         // Check si pas déjà responsable
         if (in_array($request->input('role'), ['responsable_collectivity', 'responsable_organisation'])) {
             $profile = Profile::where('email', 'ILIKE', $request->input('email'))->first();
-            if ($profile->structures->count() > 0) {
+            if ($profile && $profile->structures->count() > 0) {
                 abort(402, "Cet email est déjà rattaché à une organisation ou une collectivité");
             }
         }

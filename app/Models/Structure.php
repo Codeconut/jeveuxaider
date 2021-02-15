@@ -256,7 +256,17 @@ class Structure extends Model
     public function deleteMember(Profile $profile)
     {
         $this->members()->detach($profile);
+        $this->resetResponsable($profile);
+
         return $this->load('members');
+    }
+
+    public function resetResponsable(Profile $profile)
+    {
+        $newResponsableProfileId = Structure::find($this->id)->members->where('id', '!=', $profile->id)->pluck('id')->first();
+        if ($newResponsableProfileId) {
+            Mission::where('responsable_id', $profile->id)->update(['responsable_id' => $newResponsableProfileId]);
+        }
     }
 
     public function addMission($values)

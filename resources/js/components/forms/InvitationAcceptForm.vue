@@ -32,7 +32,9 @@ export default {
     handleAcceptInvitation() {
       if (this.$store.getters.user.email == this.invitation.email) {
         acceptInvitation(this.invitation.token).then(() => {
-          this.$router.push('/dashboard')
+          this.$store.dispatch('user/get').then(() => {
+            this.$router.push('/dashboard')
+          })
         })
       } else {
         this.$message({
