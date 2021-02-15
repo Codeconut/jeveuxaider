@@ -158,13 +158,14 @@ export default {
   methods: {
     handleCommand(command) {
       if (command.action == 'copy') {
-        this.onCopyInvitationLink()
+        console.log(command)
+        this.onCopyInvitationLink(command.invitation)
       }
       if (command.action == 'resend') {
-        this.onResendInvitationLink()
+        this.onResendInvitationLink(command.invitation)
       }
       if (command.action == 'delete') {
-        this.onDeleteInvitation()
+        this.onDeleteInvitation(command.invitation)
       }
     },
     onCopyInvitationLink(invitation) {

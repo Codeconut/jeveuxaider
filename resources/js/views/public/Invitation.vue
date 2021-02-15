@@ -73,16 +73,7 @@
             v-if="!$store.getters.isLogged"
             :invitation="invitation"
           />
-          <template v-else>
-            <div class="mt-4">
-              <button
-                class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-lg text-lg font-bold text-white bg-blue-800 hover:shadow-lg hover:scale-105 transform transition duration-150 ease-in-out"
-                @click="handleAcceptInvitation"
-              >
-                J'accepte l'invitation
-              </button>
-            </div>
-          </template>
+          <InvitationAcceptForm v-else :invitation="invitation" />
         </template>
         <template v-else>
           <InvitationRegisterForm :invitation="invitation" />
@@ -93,13 +84,18 @@
 </template>
 
 <script>
-import { getInvitation, acceptInvitation } from '@/api/user'
+import { getInvitation } from '@/api/user'
 import InvitationRegisterForm from '@/components/forms/InvitationRegisterForm'
 import InvitationLoginForm from '@/components/forms/InvitationLoginForm'
+import InvitationAcceptForm from '@/components/forms/InvitationAcceptForm'
 
 export default {
   name: 'Invitation',
-  components: { InvitationRegisterForm, InvitationLoginForm },
+  components: {
+    InvitationRegisterForm,
+    InvitationLoginForm,
+    InvitationAcceptForm,
+  },
   props: {
     token: {
       type: String,
@@ -117,20 +113,7 @@ export default {
       this.invitation = response.data
     })
   },
-  methods: {
-    handleAcceptInvitation() {
-      if (this.$store.getters.user.email == this.invitation.email) {
-        acceptInvitation(this.invitation.token).then(() => {
-          this.$router.push('/dashboard')
-        })
-      } else {
-        this.$message({
-          message: 'Cette invitation ne vous est pas destinée !',
-          type: 'error',
-        })
-      }
-    },
-  },
+  methods: {},
 }
 </script>
 

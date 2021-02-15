@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Filters\FiltersInvitationSearch;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InvitationRequest;
 use App\Models\Invitation;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Support\Str;
+use Spatie\QueryBuilder\AllowedFilter;
 
 class InvitationController extends Controller
 {
     public function index()
     {
         return QueryBuilder::for(Invitation::class)
+            ->allowedFilters(
+                AllowedFilter::custom('search', new FiltersInvitationSearch),
+            )
             ->defaultSort('-created_at')
             ->paginate(10);
     }
