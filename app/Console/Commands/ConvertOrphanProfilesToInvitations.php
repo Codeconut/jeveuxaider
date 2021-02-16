@@ -44,7 +44,7 @@ class ConvertOrphanProfilesToInvitations extends Command
 
        // ini_set('output_encoding', 'UTF-8');
 
-        $query = Profile::whereNull('user_id')->where('email', 'éric.godin@gifi.fr');
+        $query = Profile::whereNull('user_id');
         $this->info($query->count() . ' profiles will be converted to invitations');
 
         if ($this->confirm('Do you wish to continue?')) {
@@ -94,7 +94,7 @@ class ConvertOrphanProfilesToInvitations extends Command
 
                 $invitation->saveQuietly();
 
-                // $profile->delete();
+                $profile->delete();
             }
         }
     }

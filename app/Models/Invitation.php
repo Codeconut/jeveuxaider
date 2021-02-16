@@ -12,7 +12,7 @@ class Invitation extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'properties' => 'array'
+        'properties' => 'json'
     ];
 
     protected $with = ['invitable'];
@@ -22,6 +22,11 @@ class Invitation extends Model
     public function setEmailAttribute($value)
     {
         $this->attributes['email'] = strtolower($value);
+    }
+
+    public function setPropertiesAttribute($array)
+    {
+        $this->attributes['properties'] = !empty($array) ? json_encode($array) : null;
     }
 
     public function user()

@@ -59,8 +59,7 @@
             {{ scope.row.invitable.name }}
           </div>
           <template v-else>
-            <template v-if="scope.role == 'benevole'"> Bénévole </template>
-            <template v-else>
+            <template v-if="scope.row.properties">
               <div v-if="scope.row.properties.referent_departemental">
                 {{
                   scope.row.properties.referent_departemental
@@ -70,8 +69,8 @@
               <div v-else-if="scope.row.properties.referent_regional">
                 {{ scope.row.properties.referent_regional }}
               </div>
-              <div v-else>N/A</div>
             </template>
+            <div v-else>N/A</div>
           </template>
         </template>
       </el-table-column>
