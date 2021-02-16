@@ -72,16 +72,11 @@ const actions = {
         })
     })
   },
-  registerInvitation({ dispatch }, user) {
+  registerInvitation({ dispatch }, params) {
     return new Promise((resolve, reject) => {
-      registerInvitation(
-        user.email,
-        user.password,
-        user.first_name,
-        user.last_name
-      )
+      registerInvitation(params.form, params.invitation.token)
         .then(() => {
-          dispatch('login', user).then((response) => {
+          dispatch('login', params.form).then((response) => {
             resolve(response)
           })
         })
