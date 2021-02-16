@@ -76,6 +76,11 @@ class InvitationSent extends Notification
                 ->line($this->invitation->user->profile->full_name . ' vous invite à accéder au tableau de bord de la plateforme de dépôts de missions de la Réserve Civique.');
         }
 
+        if ($this->invitation->role == 'benevole') {
+            $message
+                ->line($this->invitation->user->profile->full_name . ' vous invite à accéder à la plateforme JeVeuxAider de la Réserve Civique.');
+        }
+
         $message
             ->action('Voir l\'invitation', url(config('app.url') . '/invitation/' . $this->invitation->token));
 

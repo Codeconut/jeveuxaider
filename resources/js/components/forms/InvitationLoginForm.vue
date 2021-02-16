@@ -98,7 +98,11 @@ export default {
             .then(() => {
               acceptInvitation(this.invitation.token).then(() => {
                 this.$store.dispatch('user/get').then(() => {
-                  this.$router.push('/dashboard')
+                  if (this.invitation.role == 'benevole') {
+                    this.$router.push('/')
+                  } else {
+                    this.$router.push('/dashboard')
+                  }
                 })
               })
             })

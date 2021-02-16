@@ -8,14 +8,14 @@ use App\Models\Profile;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
-class ConvertOrphanProfilesToInvitations extends Command
+class ConvertTest extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'cnut:convert-orphan-profiles-to-invitations';
+    protected $signature = 'cnut:convert-test';
 
     /**
      * The console command description.

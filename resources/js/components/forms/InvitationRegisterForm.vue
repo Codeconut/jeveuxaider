@@ -131,7 +131,11 @@ export default {
             })
             .then(() => {
               this.loading = false
-              this.$router.push('/dashboard')
+              if (this.invitation.role == 'benevole') {
+                this.$router.push('/')
+              } else {
+                this.$router.push('/dashboard')
+              }
             })
             .catch(() => {
               this.loading = false

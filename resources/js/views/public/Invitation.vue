@@ -24,6 +24,10 @@
     >
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
         <div class="mb-8 text-center">
+          <template v-if="invitation.role == 'benevole'">
+            Vous avez été invité(e) à rejoindre la plateforme d'engagement
+            <strong>JeVeuxAider</strong> de la Réserve Civique.
+          </template>
           <template v-if="invitation.role == 'responsable_organisation'">
             Vous avez été invité(e) à rejoindre l'organisation
             <strong>{{ invitation.invitable.name }}</strong> en tant que
