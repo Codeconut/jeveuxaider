@@ -12,7 +12,8 @@ class Invitation extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'properties' => 'json'
+        'properties' => 'json',
+        'last_sent_at' => 'datetime'
     ];
 
     protected $with = ['invitable'];

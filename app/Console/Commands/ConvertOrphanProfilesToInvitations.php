@@ -41,17 +41,12 @@ class ConvertOrphanProfilesToInvitations extends Command
      */
     public function handle()
     {
-
-       // ini_set('output_encoding', 'UTF-8');
-
         $query = Profile::whereNull('user_id');
         $this->info($query->count() . ' profiles will be converted to invitations');
 
         if ($this->confirm('Do you wish to continue?')) {
             $profiles = $query->get();
             foreach ($profiles as $profile) {
-                $this->info($profile->email);
-
                 $invitation = new Invitation;
                 $invitation->user_id = 1;
                 $invitation->token = Str::random(32);
@@ -64,26 +59,26 @@ class ConvertOrphanProfilesToInvitations extends Command
                 if ($profile->referent_department) {
                     $invitation->role = 'referent_departemental';
                     $invitation->properties = ['referent_departemental'=>$profile->referent_department];
-                    $this->info("Converting " . $profile->email. " / " . "Referent departemental du " . $profile->referent_department);
+                // $this->info("Converting " . $profile->email. " / " . "Referent departemental du " . $profile->referent_department);
                 } elseif ($profile->referent_region) {
                     $invitation->role = 'referent_regional';
                     $invitation->properties = ['referent_regional'=>$profile->referent_region];
-                    $this->info("Converting " . $profile->email. " / " . "Referent régional du " . $profile->referent_region);
+                // $this->info("Converting " . $profile->email. " / " . "Referent régional du " . $profile->referent_region);
                 } elseif ($profile->reseau_id) {
                     $invitation->role = 'superviseur';
                     $invitation->invitable_id = $profile->reseau_id;
                     $invitation->invitable_type = 'App\Models\Structure';
-                    $this->info("Converting " . $profile->email. " / " . "Superviseur du " . $profile->reseau->name);
+                // $this->info("Converting " . $profile->email. " / " . "Superviseur du " . $profile->reseau->name);
                 } elseif ($profile->is_analyste) {
                     $invitation->role = 'datas_analyst';
-                    $this->info("Converting " . $profile->email. " / " . "Analyste");
+                // $this->info("Converting " . $profile->email. " / " . "Analyste");
                 } elseif ($structure = $profile->structures->first()) {
                     if ($structure) {
                         $invitation->invitable_id = $structure->id;
                         $invitation->invitable_type = 'App\Models\Structure';
                         $invitation->role = $structure->statut_juridique == 'Collectivité' ? 'responsable_collectivity' : 'responsable_organisation';
-                        $this->info("Converting " . $profile->email. " / " . "Responsable structure " . $structure->name . ' #' . $structure->id);
                         if (Mission::where('responsable_id', $profile->id)->count() > 0) {
+                            $this->info("Converting " . $profile->email. " / " . "Responsable structure " . $structure->name . ' #' . $structure->id);
                             $structure->resetResponsable($profile);
                             $this->warn("Reseting responsable");
                         }

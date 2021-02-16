@@ -71,6 +71,11 @@ class InvitationController extends Controller
             abort(402, "L'invitation n'est plus disponible");
         }
 
+        $diffTimestamp = Carbon::now()->timestamp - $invitation->last_sent_at->timestamp;
+        if ($diffTimestamp < 3600) {
+            abort(402, "Vous devez attendre " . floor(60 - ($diffTimestamp / 60)) . " minutes pour renvoyer l'email d'invitation");
+        }
+
         $invitation->update(['last_sent_at' => Carbon::now()]);
         $invitation->notify(new InvitationSent($invitation));
 
