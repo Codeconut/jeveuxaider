@@ -40,6 +40,14 @@ export default {
         ...this.routeState,
         ...this.initialGeoSearch,
       })
+
+      if (
+        this.initialGeoSearch.refinementList &&
+        this.initialGeoSearch.refinementList.type &&
+        this.initialGeoSearch.refinementList.type[0] == 'Mission en présentiel'
+      ) {
+        this.$set(this.routeState, 'aroundRadius', this.defaultRadius)
+      }
     }
 
     // See https://www.algolia.com/doc/guides/building-search-ui/troubleshooting/faq/js/#why-is-my-uistate-ignored

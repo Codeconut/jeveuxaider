@@ -187,6 +187,9 @@
       :initial-geo-search="{
         aroundLatLng: `${collectivity.latitude},${collectivity.longitude}`,
         place: `${collectivity.zips[0]} ${collectivity.name}`,
+        refinementList: {
+          type: ['Mission en présentiel'],
+        },
       }"
     />
 
