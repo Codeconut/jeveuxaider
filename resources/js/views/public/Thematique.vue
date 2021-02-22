@@ -137,52 +137,6 @@
         </div>
       </div>
 
-      <!-- <div class="py-16 bg-gray-50 overflow-hidden shadow-lg">
-        <div class="relative container mx-auto px-6 sm:px-6 lg:px-8">
-          <div class="relative">
-            <h3
-              class="text-center text-5xl leading-10 font-bold tracking-tight text-gray-900 sm:text-5xl sm:leading-10"
-            >
-              <span :class="`text-${thematique.color}`">{{
-                thematique.name
-              }}</span>
-              : faites vivre l'engagement !
-            </h3>
-            <p
-              class="mt-4 max-w-2xl mx-auto text-center text-xl leading-7 text-gray-500"
-            >
-              Soutenez l'action des associations, collectivités et organisations
-              à travers différents types de missions.
-            </p>
-          </div>
-
-          <div
-            v-if="!$store.getters.loading"
-            class="relative mx-auto my-8 px-4"
-          >
-            <div
-              v-if="statistics.templates.length > 0"
-              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
-            >
-              <div v-for="template in statistics.templates" :key="template.id">
-                <div
-                  :class="`bg-${thematique.color}`"
-                  class="inline-block rounded-md p-3 text-center mb-5"
-                >
-                  <img alt="" :src="template.image" style="width: 28px" />
-                </div>
-                <div class="text-lg font-medium text-gray-900">
-                  {{ template.title }}
-                </div>
-                <div class="mt-2 text-base text-gray-500">
-                  {{ template.subtitle }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
       <div class="bg-white z-10">
         <div>
           <div class="grid grid-cols-2 gap-0 md:grid-cols-6 lg:grid-cols-6">
