@@ -14,7 +14,6 @@ use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Support\Facades\Password;
 use App\Notifications\RegisterUserVolontaire;
 use App\Http\Requests\RegisterVolontaireRequest;
-use App\Http\Requests\RegisterResponsableRequest;
 use App\Http\Requests\RegisterResponsableWithStructureRequest;
 use App\Models\Activity;
 use App\Models\SocialAccount;
@@ -79,23 +78,6 @@ class PassportController extends Controller
                     "context_role" => 'responsable'
                 ]
             ]);
-
-        return User::with(['profile.structures', 'profile.participations'])->where('id', $user->id)->first();
-    }
-
-    public function registerInvitation(RegisterResponsableRequest $request)
-    {
-        $user = User::create([
-            'name' => request("email"),
-            'email' => request("email"),
-            'password' => Hash::make(request("password"))
-        ]);
-
-        $profile = Profile::firstOrCreate(
-            ['email' => request('email')],
-            $request->validated()
-        );
-        $user->profile()->save($profile);
 
         return User::with(['profile.structures', 'profile.participations'])->where('id', $user->id)->first();
     }

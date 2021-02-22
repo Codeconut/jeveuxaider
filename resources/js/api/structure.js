@@ -27,6 +27,10 @@ export function getStructureMembers(id) {
   return request.get(`/api/structure/${id}/members`)
 }
 
+export function getStructureInvitations(id) {
+  return request.get(`/api/structure/${id}/invitations`)
+}
+
 export function fetchStructureAvailableMissions(id, params) {
   return request.get(`/api/structure/${id}/availableMissions`, { params })
 }

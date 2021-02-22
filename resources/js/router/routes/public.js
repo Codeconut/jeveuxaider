@@ -51,6 +51,11 @@ const routeOptions = [
     props: (route) => ({ slug: route.params.slug }),
     meta: { layout: 'no-header' },
   },
+  {
+    path: '/invitation/:token',
+    name: 'Invitation',
+    props: (route) => ({ token: route.params.token }),
+  },
   { path: '/403', name: 'Forbidden' },
   { path: '*', name: 'NotFound' },
 ]

@@ -14,7 +14,7 @@
       </router-link>
     </div>
     <el-divider />
-    <div class="px-12">
+    <div class="px-12 mb-12">
       <div class="text-sm font-medium text-secondary mb-4">Membres</div>
       <div v-for="member in members" :key="member.id" class="member py-4 px-6">
         <div class="flex items-center">
@@ -25,9 +25,6 @@
             <div class="text-gray-800">
               {{ member.first_name }} {{ member.last_name }}
             </div>
-            <!-- <div class="uppercase text-xs text-secondary">
-              {{ member.pivot.role }}
-            </div> -->
             <div class="text-xs text-secondary">
               <div class="break-all">{{ member.email }}</div>
               <div class="">{{ member.mobile }}</div>
@@ -48,6 +45,21 @@
         </div>
       </div>
     </div>
+    <div v-if="invitations.length > 0" class="px-12">
+      <div class="text-sm font-medium text-secondary mb-4">Invitations</div>
+      <div class="grid grid-cols-2 gap-4">
+        <div
+          v-for="invitation in invitations"
+          :key="invitation.id"
+          class="py-4 px-6 bg-gray-50 rounded"
+        >
+          <InvitationTeaser
+            :invitation="invitation"
+            @updated="fetchInvitations"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -55,11 +67,14 @@
 import {
   getStructure,
   getStructureMembers,
+  getStructureInvitations,
   deleteMember,
 } from '@/api/structure'
+import InvitationTeaser from '@/components/InvitationTeaser'
 
 export default {
   name: 'DashboardStructureMembers',
+  components: { InvitationTeaser },
   props: {
     id: {
       type: Number,
@@ -69,7 +84,8 @@ export default {
   data() {
     return {
       structure: {},
-      members: {},
+      members: [],
+      invitations: [],
     }
   },
   created() {
@@ -83,15 +99,8 @@ export default {
         this.$store.commit('setLoading', false)
         this.errors = error.response.data.errors
       })
-    getStructureMembers(this.id)
-      .then((response) => {
-        this.$store.commit('setLoading', false)
-        this.members = response.data
-      })
-      .catch((error) => {
-        this.$store.commit('setLoading', false)
-        this.errors = error.response.data.errors
-      })
+    this.fetchMembers()
+    this.fetchInvitations()
   },
   methods: {
     deleteConfirm(member) {
@@ -124,6 +133,26 @@ export default {
             })
         })
         .catch(() => {})
+    },
+    fetchMembers() {
+      getStructureMembers(this.id)
+        .then((response) => {
+          this.$store.commit('setLoading', false)
+          this.members = response.data
+        })
+        .catch((error) => {
+          this.$store.commit('setLoading', false)
+          this.errors = error.response.data.errors
+        })
+    },
+    fetchInvitations() {
+      getStructureInvitations(this.id)
+        .then((response) => {
+          this.invitations = response.data
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors
+        })
     },
   },
 }
