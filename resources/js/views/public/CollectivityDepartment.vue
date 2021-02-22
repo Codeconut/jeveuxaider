@@ -104,188 +104,22 @@
           alt=""
         />
 
-        <div class="relative">
-          <h2
-            class="text-center text-5xl leading-10 font-bold tracking-tight text-gray-900 sm:text-5xl sm:leading-10"
-          >
-            Choisissez votre domaine d’action
-          </h2>
-          <p
-            class="mt-4 max-w-5xl mx-auto text-center text-xl leading-7 text-gray-500"
-          >
-            Avec JeVeuxAider, soutenez de grandes causes dans votre territoire
-          </p>
-        </div>
-
-        <div class="relative mt-12 mb-8">
-          <div class="my-6 grid grid-cols-2 gap-3 md:grid-cols-4 lg:my-12">
-            <div
-              class="col-span-1 flex flex-col justify-center items-center text-center p-6 bg-white shadow-md rounded-lg border-blue-800 border-b-2 text-gray-800 hover:border hover:text-gray-900 lg:flex-row"
-            >
-              <img
-                class="h-7 pr-3 opacity-50 mb-2 lg:mb-0"
-                style="width: 40px"
-                src="/images/covid.svg"
-                alt=""
-              />
-              <span class="font-semibold">Mobilisation Covid19</span>
-            </div>
-
-            <div
-              class="col-span-1 flex flex-col justify-center items-center text-center p-6 bg-white shadow-md rounded-lg border-blue-800 border-b-2 text-gray-800 hover:border hover:text-gray-900 lg:flex-row"
-            >
-              <img
-                class="h-7 pr-3 opacity-50 mb-2 lg:mb-0"
-                style="width: 40px"
-                src="/images/sante.svg"
-                alt=""
-              />
-              <span class="font-semibold text-gray-800">Santé pour tous</span>
-            </div>
-
-            <div
-              class="col-span-1 flex flex-col justify-center items-center text-center p-6 bg-white shadow-md rounded-lg border-blue-800 border-b-2 text-gray-800 hover:border hover:text-gray-900 lg:flex-row"
-            >
-              <img
-                class="h-7 pr-3 opacity-50 mb-2 lg:mb-0"
-                style="width: 40px"
-                src="/images/securite.svg"
-                alt=""
-              />
-              <span class="font-semibold text-gray-800"
-                >Prévention et protection</span
-              >
-            </div>
-
-            <div
-              class="col-span-1 flex flex-col justify-center items-center text-center p-6 bg-white shadow-md rounded-lg border-blue-800 border-b-2 text-gray-800 hover:border hover:text-gray-900 lg:flex-row"
-            >
-              <img
-                class="h-7 pr-3 opacity-50 mb-2 lg:mb-0"
-                style="width: 40px"
-                src="/images/education.svg"
-                alt=""
-              />
-              <span class="font-semibold text-gray-800"
-                >Education pour tous</span
-              >
-            </div>
-            <div
-              class="col-span-1 flex flex-col justify-center items-center text-center p-6 bg-white shadow-md rounded-lg border-blue-800 border-b-2 text-gray-800 hover:border hover:text-gray-900 lg:flex-row"
-            >
-              <img
-                class="h-7 pr-3 opacity-50 mb-2 lg:mb-0"
-                style="width: 40px"
-                src="/images/sport.svg"
-                alt=""
-              />
-              <span class="font-semibold text-gray-800">Sport pour tous </span>
-            </div>
-
-            <div
-              class="col-span-1 flex flex-col justify-center items-center text-center p-6 bg-white shadow-md rounded-lg border-blue-800 border-b-2 text-gray-800 hover:border hover:text-gray-900 lg:flex-row"
-            >
-              <img
-                class="h-7 pr-3 opacity-50 mb-2 lg:mb-0"
-                style="width: 40px"
-                src="/images/environnement.svg"
-                alt=""
-              />
-              <span class="font-semibold text-gray-800"
-                >Protection de la nature
-              </span>
-            </div>
-
-            <div
-              class="col-span-1 flex flex-col justify-center items-center text-center p-6 bg-white shadow-md rounded-lg border-blue-800 border-b-2 text-gray-800 hover:border hover:text-gray-900 lg:flex-row"
-            >
-              <img
-                class="h-7 pr-3 opacity-50 mb-2 lg:mb-0"
-                style="width: 40px"
-                src="/images/art.svg"
-                alt=""
-              />
-              <span class="font-semibold text-gray-800"
-                >Art & Culture pour tous
-              </span>
-            </div>
-
-            <div
-              class="col-span-1 flex flex-col justify-center items-center text-center p-6 bg-white shadow-md rounded-lg border-blue-800 border-b-2 text-gray-800 hover:border hover:text-gray-900 lg:flex-row"
-            >
-              <img
-                class="h-7 pr-3 opacity-50 mb-2 lg:mb-0"
-                style="width: 40px"
-                src="/images/vivre-ensemble.svg"
-                alt=""
-              />
-              <span class="font-semibold text-gray-800"
-                >Solidarité et insertion
-              </span>
-            </div>
-            <div
-              class="col-span-1 lg:col-start-2 flex flex-col justify-center items-center text-center p-6 bg-white shadow-md rounded-lg border-blue-800 border-b-2 text-gray-800 hover:border hover:text-gray-900 lg:flex-row"
-            >
-              <img
-                class="h-7 pr-3 opacity-50 mb-2 lg:mb-0"
-                style="width: 40px"
-                src="/images/memoire.svg"
-                alt=""
-              />
-              <span class="font-semibold text-gray-800"
-                >Mémoire et citoyenneté
-              </span>
-            </div>
-            <div
-              class="col-span-1 flex flex-col justify-center items-center text-center p-6 bg-white shadow-md rounded-lg border-blue-800 border-b-2 text-gray-800 hover:border hover:text-gray-900 lg:flex-row"
-            >
-              <img
-                class="h-7 pr-3 opacity-50 mb-2 lg:mb-0"
-                style="width: 40px"
-                src="/images/cooperation.svg"
-                alt=""
-              />
-              <span class="font-semibold text-gray-800"
-                >Coopération internationale
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div v-if="!loading" class="relative mx-auto mt-12 mb-8 px-4">
-          <div
-            v-if="statistics.templates.length > 0"
-            class="mb-16 text-center text-base font-semibold uppercase text-gray-500 tracking-wider"
-          >
-            Parmi les types de missions populaires
-          </div>
-
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
-          >
-            <div v-for="template in statistics.templates" :key="template.id">
-              <div
-                class="inline-block bg-primary rounded-md p-3 text-center mb-5"
-              >
-                <img alt="" :src="template.image" style="width: 28px" />
-              </div>
-              <div class="text-lg font-medium text-gray-900">
-                {{ template.title }}
-              </div>
-              <div class="mt-2 text-base text-gray-500">
-                {{ template.subtitle }}
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div v-if="!loading" class="relative mx-auto my-8 px-4">
           <div v-if="statistics.templates.length > 0">
-            <div
-              class="mb-16 text-center text-base font-semibold uppercase text-gray-500 tracking-wider"
-            >
-              Retrouvez toutes les missions disponibles dans votre commune
+            <div class="mb-16">
+              <h2
+                class="text-center text-5xl leading-10 font-bold tracking-tight text-gray-900 sm:text-5xl sm:leading-10"
+              >
+                Engagez-vous près de chez vous
+              </h2>
+              <p
+                class="mt-4 max-w-5xl mx-auto text-center text-xl leading-7 text-gray-500"
+              >
+                Avec JeVeuxAider, soutenez de grandes causes dans votre
+                territoire
+              </p>
             </div>
+
             <div class="flex flex-wrap items-center justify-center">
               <div
                 v-for="(city, key) in statistics.cities"
