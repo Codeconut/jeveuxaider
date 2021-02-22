@@ -76,9 +76,8 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('conversations/{conversation}/messages', 'Api\MessagesController@store');
 
     Route::post('invitation/{token}/resend', 'Api\InvitationController@resend');
-    Route::delete('invitation/{token}/delete', 'Api\InvitationController@delete');
     Route::post('invitation/{token}/accept', 'Api\InvitationController@accept');
-    Route::post('invitation/{token}/delete', 'Api\InvitationController@delete');
+    Route::delete('invitation/{token}/delete', 'Api\InvitationController@delete');
 
     Route::post('logout', 'Api\PassportController@logout');
 });
@@ -102,7 +101,7 @@ Route::group(['middleware' => ['auth:api', 'has.context.role.header' ]], functio
 
     // STRUCTURE INVITATIONS
     Route::get('structure/{structure}/invitations', 'Api\StructureController@invitations');
-
+    Route::post('invitation', 'Api\InvitationController@store');
 
     // MISSIONS
     Route::get('missions', 'Api\MissionController@index');
@@ -246,5 +245,4 @@ Route::group(['middleware' => ['auth:api', 'is.admin']], function () {
 
     // INVITATIONS
     Route::get('invitations', 'Api\InvitationController@index');
-    Route::post('invitation', 'Api\InvitationController@store');
 });
