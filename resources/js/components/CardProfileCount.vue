@@ -67,12 +67,6 @@
                 {{ data.admin | formatNumber }}
               </div>
             </div>
-            <div class="mr-6 mt-6">
-              <div class="text-gray-500 text-sm">Invités</div>
-              <div class>
-                {{ data.invited | formatNumber }}
-              </div>
-            </div>
           </template>
         </div>
       </template>
