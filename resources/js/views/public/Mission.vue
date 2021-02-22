@@ -243,8 +243,7 @@
                         <span
                           class="max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 pb-4 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full bg-orange-500 text-white"
                         >
-                          Cette mission a le statut
-                          {{ mission.state.toLowerCase() }}
+                          {{ mission.state }}
                         </span>
                       </template>
                     </template>
@@ -504,80 +503,69 @@
             </div>
           </div>
 
-          <hr class="border-gray-200 my-12" />
+          <template v-if="mission.state && mission.state == 'Validée'">
+            <hr class="border-gray-200 my-12" />
 
-          <div class="text-center pb-20">
-            <h2
-              class="text-4xl leading-9 font-bold tracking-tight text-gray-900 sm:text-5xl sm:leading-10"
-            >
-              Prêt à rejoindre le mouvement&nbsp;?
-            </h2>
-            <p
-              class="mt-4 relative max-w-4xl text-xl sm:text-2xl leading-7 sm:leading-9 text-gray-500 lg:mx-auto"
-            >
-              Inscrivez-vous à la mission et l'organisation vous recontactera
-              dans les plus brefs délais. Vous pourrez aussi échanger avec elle
-              pour obtenir plus de précisions.
-            </p>
-            <div class="mt-10 flex justify-center z-10 relative">
-              <template v-if="mission.state">
-                <template v-if="mission.state == 'Validée'">
-                  <template v-if="mission.has_places_left">
-                    <template v-if="$store.getters.isLogged">
-                      <template v-if="isNotResponsableOfMission">
-                        <el-button
-                          v-if="isAlreadyRegistered"
-                          class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 pb-4 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                          @click="handleClickParticipate"
-                          >Je propose mon aide</el-button
-                        >
-                        <router-link
-                          v-else
-                          to="/user/missions"
-                          class="max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full text-green-800 bg-green-100 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                          >Vous êtes déjà inscrit !</router-link
-                        >
-                      </template>
-                      <template v-else>
-                        <router-link
-                          :to="`/dashboard/mission/${mission.id}`"
-                          class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 pb-4 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                          >Tableau de bord</router-link
-                        >
-                      </template>
-                    </template>
-
-                    <template v-else>
-                      <button
-                        class="flex items-center justify-center px-12 py-3 pb-4 border border-transparent text-2xl leading-9 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                        @click="dialogProposerAide = true"
+            <div class="text-center pb-20">
+              <h2
+                class="text-4xl leading-9 font-bold tracking-tight text-gray-900 sm:text-5xl sm:leading-10"
+              >
+                Prêt à rejoindre le mouvement&nbsp;?
+              </h2>
+              <p
+                class="mt-4 relative max-w-4xl text-xl sm:text-2xl leading-7 sm:leading-9 text-gray-500 lg:mx-auto"
+              >
+                Inscrivez-vous à la mission et l'organisation vous recontactera
+                dans les plus brefs délais. Vous pourrez aussi échanger avec
+                elle pour obtenir plus de précisions.
+              </p>
+              <div class="mt-10 flex justify-center z-10 relative">
+                <template v-if="mission.has_places_left">
+                  <template v-if="$store.getters.isLogged">
+                    <template v-if="isNotResponsableOfMission">
+                      <el-button
+                        v-if="isAlreadyRegistered"
+                        class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 pb-4 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+                        @click="handleClickParticipate"
+                        >Je propose mon aide</el-button
                       >
-                        Proposer votre aide
-                      </button>
+                      <router-link
+                        v-else
+                        to="/user/missions"
+                        class="max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full text-green-800 bg-green-100 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+                        >Vous êtes déjà inscrit !</router-link
+                      >
+                    </template>
+                    <template v-else>
+                      <router-link
+                        :to="`/dashboard/mission/${mission.id}`"
+                        class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 pb-4 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+                        >Tableau de bord</router-link
+                      >
                     </template>
                   </template>
-                </template>
 
-                <template v-else>
-                  <span
-                    class="max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 pb-4 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full bg-orange-500 text-white"
-                  >
-                    Cette mission a le statut
-                    {{ mission.state.toLowerCase() }}
-                  </span>
+                  <template v-else>
+                    <button
+                      class="flex items-center justify-center px-12 py-3 pb-4 border border-transparent text-2xl leading-9 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+                      @click="dialogProposerAide = true"
+                    >
+                      Proposer votre aide
+                    </button>
+                  </template>
                 </template>
-              </template>
-            </div>
-            <div class="mt-8 z-1">
-              <div class="text-center justify-center">
-                <img
-                  class="mx-auto w-full h-auto md:w-auto md:h-full opacity-50"
-                  src="/images/chacunpourtous.png"
-                  style="max-height: 7rem"
-                />
+              </div>
+              <div class="mt-8 z-1">
+                <div class="text-center justify-center">
+                  <img
+                    class="mx-auto w-full h-auto md:w-auto md:h-full opacity-50"
+                    src="/images/chacunpourtous.png"
+                    style="max-height: 7rem"
+                  />
+                </div>
               </div>
             </div>
-          </div>
+          </template>
         </div>
       </div>
       <el-dialog
