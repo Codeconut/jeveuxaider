@@ -6,17 +6,15 @@
           <div class="mt-10 mx-auto max-w-screen-xl px-4 sm:px-6 md:mt-16">
             <div class="text-center">
               <h2
-                class="text-4xl tracking-tight leading-10 font-bold text-white sm:text-4xl sm:leading-none md:text-5xl"
+                class="text-4xl tracking-tight leading-10 font-bold text-white sm:text-4xl sm:leading-none md:text-5xl max-w-5xl mx-auto"
               >
-                Collectivités, faites vivre JeVeuxAider
-                <br />
-
-                au sein de votre territoire
+                Collectivités, faites vivre JeVeuxAider.gouv.fr au sein de votre
+                territoire
               </h2>
               <p
                 class="mt-3 max-w-md mx-auto text-base text-white sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
               >
-                JeVeuxAider met à disposition de votre collectivité une
+                JeVeuxAider.gouv.fr met à disposition de votre collectivité une
                 <b>page dédiée</b> permettant de centraliser les
                 <b>missions de vos associations et organisations publique </b>
                 sur votre territoire afin de valoriser et promouvoir
@@ -309,7 +307,7 @@
           to="/register/responsable"
           class="mt-4 lg:mt-0 inline-flex shadow-lg items-center text-center justify-center px-7 py-3 border border-transparent text-lg leading-6 font-medium rounded-full border hover:bg-red-700 hover:text-white bg-red-600 text-white transition duration-150 ease-in-out"
         >
-          Rejoignez JeVeuxAider
+          Rejoignez JeVeuxAider.gouv.fr
         </router-link>
       </div>
     </div>

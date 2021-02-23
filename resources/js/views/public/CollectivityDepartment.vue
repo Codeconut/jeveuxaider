@@ -27,7 +27,7 @@
                 collectivity.title
               }}</template>
               <template v-else
-                >Rejoignez JeVeuxAider dans votre département</template
+                >Rejoignez JeVeuxAider.gouv.fr dans votre département</template
               >
             </h1>
 
@@ -40,8 +40,8 @@
               <template v-else>
                 <b>{{ collectivity.name }}</b> • Votre organisation a besoin de
                 renfort localement ? Vous souhaitez vous engager bénévolement au
-                plus près de chez vous ? Rejoignez JeVeuxAider dans votre
-                département.
+                plus près de chez vous ? Rejoignez JeVeuxAider.gouv.fr dans
+                votre département.
               </template>
             </p>
 
@@ -115,7 +115,7 @@
               <p
                 class="mt-4 max-w-5xl mx-auto text-center text-xl leading-7 text-gray-500"
               >
-                Avec JeVeuxAider, soutenez de grandes causes dans votre
+                Avec JeVeuxAider.gouv.fr, soutenez de grandes causes dans votre
                 territoire
               </p>
             </div>
@@ -213,7 +213,7 @@ export default {
         {
           name: 'description',
           content:
-            'Rejoignez JeVeuxAider et trouvez une mission de bénévolat auprès d’une organisation publique ou associative. Plus de 320 000 bénévoles déjà inscrits',
+            'Rejoignez JeVeuxAider.gouv.fr et trouvez une mission de bénévolat auprès d’une organisation publique ou associative. Plus de 320 000 bénévoles déjà inscrits',
         },
       ],
     }

@@ -342,7 +342,7 @@ export default {
     },
     onSubmitDelete() {
       this.$confirm(
-        'Souhaitez-vous réellement supprimer votre organisation de JeVeuxAider ?',
+        'Souhaitez-vous réellement supprimer votre organisation de JeVeuxAider.gouv.fr ?',
         'Supprimer mon organisation',
         {
           confirmButtonText: 'Je confirme',

@@ -78,7 +78,7 @@ class InvitationSent extends Notification
 
         if ($this->invitation->role == 'benevole') {
             $message
-                ->line($this->invitation->user->profile->full_name . ' vous invite à accéder à la plateforme JeVeuxAider de la Réserve Civique.');
+                ->line($this->invitation->user->profile->full_name . ' vous invite à accéder à la plateforme JeVeuxAider.gouv.fr de la Réserve Civique.');
         }
 
         $message

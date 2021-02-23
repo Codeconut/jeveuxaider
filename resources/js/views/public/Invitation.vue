@@ -26,7 +26,7 @@
         <div class="mb-8 text-center">
           <template v-if="invitation.role == 'benevole'">
             Vous avez été invité(e) à rejoindre la plateforme d'engagement
-            <strong>JeVeuxAider</strong> de la Réserve Civique.
+            <strong>JeVeuxAider.gouv.fr</strong> de la Réserve Civique.
           </template>
           <template v-if="invitation.role == 'responsable_organisation'">
             Vous avez été invité(e) à rejoindre l'organisation

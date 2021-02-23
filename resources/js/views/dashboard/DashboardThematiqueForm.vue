@@ -36,7 +36,7 @@
       <el-form-item label="Titre du domaine d'action" prop="title">
         <el-input
           v-model="form.title"
-          placeholder="Ex: Rejoignez JeVeuxAider pour la solidarité et l'insertion"
+          placeholder="Ex: Rejoignez JeVeuxAider.gouv.fr pour la solidarité et l'insertion"
         />
       </el-form-item>
 

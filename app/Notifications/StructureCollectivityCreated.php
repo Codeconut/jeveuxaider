@@ -45,7 +45,7 @@ class StructureCollectivityCreated extends Notification
         $mailMessage = (new MailMessage)
             ->subject('Votre organisation est en attente de validation')
             ->greeting('Bonjour ' . $notifiable->profile->first_name . ',')
-            ->line("Vous venez de rejoindre la plateforme JeVeuxAider proposée par la Réserve Civique : bienvenue ! Toute l’équipe est ravie de vous compter parmi les 5000 organisations membres.")
+            ->line("Vous venez de rejoindre la plateforme JeVeuxAider.gouv.fr proposée par la Réserve Civique : bienvenue ! Toute l’équipe est ravie de vous compter parmi les 5000 organisations membres.")
             ->line("Pour faire connaissance, je vous invite à notre session d'accueil. Au programme :")
             ->line("- 💻 On vous présente la plateforme et son fonctionnement.")
             ->line("- ❓ On répond à vos questions.")
@@ -53,7 +53,7 @@ class StructureCollectivityCreated extends Notification
             ->line(new HtmlString("Pour vous inscrire, c'est par ici 👉 : <a href='https://app.livestorm.co/jeveuxaider/session-daccueil-collectivites-territoriales'>https://app.livestorm.co/jeveuxaider/session-daccueil-collectivites-territoriales</a>"))
             ->line("D'ici là, vous pouvez déjà poster vos premières missions et vous familiariser avec la plateforme.")
             ->action('Créer une mission', url(config('app.url') . '/dashboard/structure/' . $this->structure->id . '/missions/add'))
-            ->line("JeVeuxAider a pour mission de faciliter vos recrutements de bénévoles et de faire grandir l’engagement en France. Merci pour votre confiance !")
+            ->line("JeVeuxAider.gouv.fr a pour mission de faciliter vos recrutements de bénévoles et de faire grandir l’engagement en France. Merci pour votre confiance !")
         ;
 
         return $mailMessage;

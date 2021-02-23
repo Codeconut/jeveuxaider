@@ -15,7 +15,7 @@
         >
           <p class="text-lg lg:text-xl font-medium text-gray-900">
             La présente plateforme fait partie intégrante du système
-            d’information de JeVeuxAider.
+            d’information de JeVeuxAider.gouv.fr.
           </p>
           <p class="text-lg lg:text-xl font-medium text-gray-900">
             La plateforme vise à permettre aux bénévoles et aux organisations de

@@ -31,7 +31,7 @@
                 collectivity.title
               }}</template>
               <template v-else
-                >Rejoignez JeVeuxAider dans votre collectivité</template
+                >Rejoignez JeVeuxAider.gouv.fr dans votre collectivité</template
               >
             </h1>
 
@@ -219,7 +219,7 @@
               "
               class="inline-flex items-center justify-center px-7 py-3 border border-transparent text-base leading-6 font-medium rounded-full text-white bg-blue-800 hover:bg-blue-900 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
             >
-              Rejoignez JeVeuxAider
+              Rejoignez JeVeuxAider.gouv.fr
             </router-link>
           </div>
         </div>
@@ -244,7 +244,7 @@ export default {
         {
           name: 'description',
           content:
-            'Rejoignez JeVeuxAider et trouvez une mission de bénévolat auprès d’une organisation publique ou associative. Plus de 320 000 bénévoles déjà inscrits',
+            'Rejoignez JeVeuxAider.gouv.fr et trouvez une mission de bénévolat auprès d’une organisation publique ou associative. Plus de 320 000 bénévoles déjà inscrits',
         },
       ],
     }

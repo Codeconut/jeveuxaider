@@ -50,22 +50,22 @@ class ProfileInvitationSent extends Notification
 
         if ($this->role == 'referent') {
             $message
-                ->line($this->user->profile->full_name . ' vous invite à devenir le référent du département ' . $notifiable->referent_department. ' sur la plateforme de dépôts de missions de JeVeuxAider.');
+                ->line($this->user->profile->full_name . ' vous invite à devenir le référent du département ' . $notifiable->referent_department. ' sur la plateforme de dépôts de missions de JeVeuxAider.gouv.fr.');
         }
 
         if ($this->role == 'referent_regional') {
             $message
-                ->line($this->user->profile->full_name . ' vous invite à devenir le référent de la région ' . $notifiable->referent_region. ' sur la plateforme de dépôts de missions de JeVeuxAider.');
+                ->line($this->user->profile->full_name . ' vous invite à devenir le référent de la région ' . $notifiable->referent_region. ' sur la plateforme de dépôts de missions de JeVeuxAider.gouv.fr.');
         }
 
         if ($this->role == 'superviseur') {
             $message
-                ->line($this->user->profile->full_name . ' vous invite à devenir le superviseur du réseau ' . $notifiable->reseau->name. ' sur la plateforme de dépôts de missions de JeVeuxAider.');
+                ->line($this->user->profile->full_name . ' vous invite à devenir le superviseur du réseau ' . $notifiable->reseau->name. ' sur la plateforme de dépôts de missions de JeVeuxAider.gouv.fr.');
         }
 
         if ($this->role == 'analyste') {
             $message
-                ->line($this->user->profile->full_name . ' vous invite à accéder au tableau de bord de la plateforme de dépôts de missions de JeVeuxAider.');
+                ->line($this->user->profile->full_name . ' vous invite à accéder au tableau de bord de la plateforme de dépôts de missions de JeVeuxAider.gouv.fr.');
         }
 
         if (!$notifiable->user) {
