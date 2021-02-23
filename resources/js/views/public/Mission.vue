@@ -1,22 +1,6 @@
 <template>
   <div>
     <template v-if="!loading">
-      <breadcrumb
-        :items="[
-          { label: 'Missions de bénévolat', link: '/missions' },
-          {
-            label: domainName(mission),
-            link: `/missions?refinementList[domaines][0]=${domainName(
-              mission
-            )}`,
-          },
-          {
-            label: `Bénévolat ${mission.structure.name} à ${mission.city}`,
-            h1: true,
-          },
-        ]"
-      />
-
       <div class="absolute" style="height: 360px">
         <img
           src="/images/bg_header_mission.jpg"
@@ -25,7 +9,23 @@
         <div class="bg-blue-900 opacity-25 absolute inset-0"></div>
       </div>
 
-      <div class="relative mt-10 mb-12">
+      <div class="relative mb-12">
+        <breadcrumb
+          theme="transparent"
+          :items="[
+            { label: 'Missions de bénévolat', link: '/missions' },
+            {
+              label: domainName(mission),
+              link: `/missions?refinementList[domaines][0]=${domainName(
+                mission
+              )}`,
+            },
+            {
+              label: `Bénévolat ${mission.structure.name} à ${mission.city}`,
+              h1: true,
+            },
+          ]"
+        />
         <div class="container mx-auto px-4">
           <div class="bg-white rounded-lg shadow-lg">
             <div class="lg:flex">
