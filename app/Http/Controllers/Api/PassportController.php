@@ -18,6 +18,7 @@ use App\Http\Requests\RegisterResponsableWithStructureRequest;
 use App\Models\Activity;
 use App\Models\SocialAccount;
 use App\Models\Structure;
+use App\Notifications\RegisterUserResponsable;
 use Illuminate\Support\Facades\Auth;
 
 class PassportController extends Controller
@@ -65,7 +66,7 @@ class PassportController extends Controller
         );
 
         // UPDATE LOG
-        $activity = Activity::where('subject_type', 'App\Models\Structure')
+        Activity::where('subject_type', 'App\Models\Structure')
             ->where('subject_id', $structure->id)
             ->where('description', 'created')
             ->update([
@@ -78,6 +79,9 @@ class PassportController extends Controller
                     "context_role" => 'responsable'
                 ]
             ]);
+
+        $notification = new RegisterUserResponsable($structure);
+        $user->notify($notification);
 
         return User::with(['profile.structures', 'profile.participations'])->where('id', $user->id)->first();
     }
