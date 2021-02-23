@@ -141,8 +141,6 @@ class CollectivityController extends Controller
             ->orderBy('missions_count', 'desc')
             ->get();
 
-        ray($cities);
-
         foreach ($cities as $key => $city) {
             $cities[$key] = [
                 'name' => $city->city,
