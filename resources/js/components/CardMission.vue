@@ -99,14 +99,7 @@
         class="places-left font-bold"
         :class="[{ 'is-full': !mission.has_places_left }]"
       >
-        <template v-if="mission.has_places_left">
-          {{ mission.places_left | formatNumber }}
-          {{
-            mission.places_left
-              | pluralize(['bénévole recherché', 'bénévoles recherchés'])
-          }}
-        </template>
-        <template v-else>Complet</template>
+        {{ placesLeftText }}
       </span>
 
       <img
@@ -143,6 +136,28 @@ export default {
     },
   },
   computed: {
+    placesLeftText() {
+      if (
+        this.mission.publisher_name &&
+        this.mission.publisher_name != 'Réserve Civique' &&
+        this.mission.places_left > 99
+      ) {
+        return 'Plusieurs bénévoles recherchés'
+      } else if (this.mission.has_places_left && this.mission.places_left > 0) {
+        return (
+          this.mission.places_left +
+          ' ' +
+          this.$options.filters.pluralize(this.mission.places_left, [
+            'bénévole recherché',
+            'bénévoles recherchés',
+          ])
+        )
+      } else {
+        return this.mission.has_places_left === false
+          ? 'Complet'
+          : 'Plusieurs bénévoles recherchés'
+      }
+    },
     participationStateTheme() {
       if (this.participation) {
         switch (this.participation.state) {
