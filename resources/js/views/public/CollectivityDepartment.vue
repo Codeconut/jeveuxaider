@@ -105,7 +105,7 @@
         />
 
         <div v-if="!loading" class="relative mx-auto my-8 px-4">
-          <div v-if="statistics.templates.length > 0">
+          <div v-if="statistics.cities.length > 0">
             <div class="mb-16">
               <h2
                 class="text-center text-5xl leading-10 font-bold tracking-tight text-gray-900 sm:text-5xl sm:leading-10"
@@ -156,7 +156,7 @@
           </h2>
           <p class="text-xl leading-8 text-indigo-200 mt-2">
             <router-link to="/regles-de-securite" target="_blank">
-              Consulter les règles de sécurité ›
+              Consulter les règles de sécurité
             </router-link>
           </p>
 

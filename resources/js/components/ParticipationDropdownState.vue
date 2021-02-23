@@ -107,7 +107,6 @@ export default {
   methods: {
     onDeclineSubmit() {
       this.form.state = 'Refusée'
-
       this.$emit('updated')
     },
     onSubmitState(state) {

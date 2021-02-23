@@ -514,6 +514,16 @@ return [
         ]
     ],
 
+    'participation_canceled_by_benevole_reasons' => [
+        "vocabulary" => "Reasons",
+        "terms" => [
+            "no_response" => "L'organisation ne répond pas.",
+            "requirements_not_fulfilled" => "La mission ne correspond pas à mes attentes.",
+            "not_available" => "Je ne suis plus disponible.",
+            "other" => "Autres.",
+        ]
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | COLLECTIVITIES TYPES
