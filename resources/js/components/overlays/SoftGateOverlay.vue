@@ -7,7 +7,7 @@
       <div class="flex flex-col w-full h-full px-4">
         <div
           class="p-4 -mr-4 lg:m-0 lg:p-8 cursor-pointer ml-auto lg:absolute lg:right-0"
-          @click="$emit('closed')"
+          @click="onClose"
         >
           <img src="/images/close-white.svg" alt="Fermer" width="24px" />
         </div>
@@ -24,7 +24,17 @@
             <div
               class="bg-gray-100 rounded-lg max-w-full lg:max-w-2xl mx-auto p-10"
             >
-              <SoftGateEmail />
+              <SoftGateEmail
+                v-if="step == 'email'"
+                @login="goToLogin"
+                @register="goToRegister"
+              />
+              <SoftGateLogin
+                v-if="step == 'login'"
+                :form="datas"
+                @next="step = 'participate'"
+              />
+              <SoftGateParticipate v-if="step == 'participate'" />
             </div>
           </div>
         </div>
@@ -35,15 +45,34 @@
 
 <script>
 import SoftGateEmail from '@/components/overlays/soft-gate/SoftGateEmail'
+import SoftGateLogin from '@/components/overlays/soft-gate/SoftGateLogin'
+import SoftGateParticipate from '@/components/overlays/soft-gate/SoftGateParticipate'
 
 export default {
   name: 'SoftGateOverlay',
-  components: { SoftGateEmail },
+  components: { SoftGateEmail, SoftGateLogin, SoftGateParticipate },
   data() {
-    return {}
+    return {
+      step: 'email',
+      datas: null,
+    }
+  },
+  created() {
+    if (this.$store.getters.isLogged) {
+      this.step = 'participate'
+    }
   },
   methods: {
+    goToLogin(datas) {
+      this.step = 'login'
+      this.datas = datas
+    },
+    goToRegister(datas) {
+      this.step = 'register'
+      this.datas = datas
+    },
     onClose() {
+      this.$store.commit('setMissionSelected', null)
       this.$emit('closed')
     },
   },

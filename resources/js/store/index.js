@@ -12,7 +12,8 @@ Vue.use(Vuex)
 const state = {
   isAppLoaded: false,
   searchOverlay: false,
-  softGateOverlay: true,
+  softGateOverlay: false,
+  missionSelected: null,
   collectivities: null,
   sidebar: true,
   loading: false,
@@ -90,6 +91,9 @@ const mutations = {
   },
   toggleSoftGateOverlay: (state) => {
     state.softGateOverlay = !state.softGateOverlay
+  },
+  setMissionSelected: (state, mission) => {
+    state.missionSelected = mission
   },
   setShowAvisBenevole: (state, value) => {
     state.showAvisBenevole = value

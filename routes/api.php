@@ -43,6 +43,8 @@ Route::post('sendinblue/contact', 'Api\SendInBlueController@store');
 Route::get('invitation/{token}', 'Api\InvitationController@show');
 Route::post('invitation/{token}/register', 'Api\InvitationController@register');
 
+Route::post('firstname', 'Api\ProfileController@firstname');
+
 Route::group(['middleware' => ['auth:api']], function () {
     // CONFIG
     Route::get('user', 'Api\UserController@show');

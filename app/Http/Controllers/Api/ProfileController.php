@@ -259,4 +259,15 @@ class ProfileController extends Controller
             $media->delete();
         }
     }
+
+    public function firstname(Request $request)
+    {
+        $profile = Profile::where('email', 'ILIKE', request('email'))->first();
+
+        if (!$profile) {
+            return null;
+        }
+
+        return collect($profile)->only('first_name', 'email');
+    }
 }

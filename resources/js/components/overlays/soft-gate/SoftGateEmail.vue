@@ -13,12 +13,18 @@
         </span>
       </div>
     </div>
-    <el-form ref="emailForm" :model="form" :rules="rules">
-      <el-form-item prop="email">
+    <el-form
+      ref="emailForm"
+      :model="form"
+      :rules="rules"
+      class="mb-0 form-center"
+    >
+      <el-form-item prop="email" class="mb-5">
         <input
           v-model.trim="form.email"
           class="input-shadow text-center bg-white px-5 py-1 w-full rounded-full text-gray-400 placeholder-gray-400 focus:outline-none focus:shadow-outline"
           placeholder="Votre e-mail"
+          @keyup.enter="onSubmit"
         />
       </el-form-item>
 
@@ -34,6 +40,7 @@
 
 <script>
 import FranceConnect from '@/components/FranceConnect.vue'
+import { getUserFirstname } from '@/api/user'
 
 export default {
   name: 'SoftGateEmail',
@@ -61,7 +68,13 @@ export default {
     onSubmit() {
       this.$refs['emailForm'].validate((valid) => {
         if (valid) {
-          console.log('TOTO')
+          getUserFirstname(this.form.email).then((res) => {
+            if (!res.data) {
+              this.$emit('register', { email: this.form.email })
+            } else {
+              this.$emit('login', res.data)
+            }
+          })
         }
       })
     },

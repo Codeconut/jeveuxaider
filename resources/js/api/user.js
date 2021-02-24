@@ -149,3 +149,9 @@ export const rolesList = [
   { key: 'volontaire', label: 'Bénévole' },
   { key: 'analyste', label: 'Analyste' },
 ]
+
+export function getUserFirstname(email) {
+  return request.post(`/api/firstname`, {
+    email,
+  })
+}

@@ -6,6 +6,7 @@ const getters = {
   sidebar: (state) => state.sidebar,
   searchOverlay: (state) => state.searchOverlay,
   softGateOverlay: (state) => state.softGateOverlay,
+  missionSelected: (state) => state.missionSelected,
   isLogged: (state) => !!state.auth.accessToken && state.user.user,
   tokenHasExpired: (state) => {
     return state.auth.dateExpire
