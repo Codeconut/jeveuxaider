@@ -19,7 +19,10 @@
           <div class="pb-32 lg:pb-0">
             <div class="text-center text-white text-lg">#ChacunPourTous</div>
             <div class="title text-center text-white font-extrabold mb-4">
-              Participez à cette mission
+              <template v-if="step != 'share'"
+                >Participez à cette mission</template
+              >
+              <template v-else>Merci pour votre engagement</template>
             </div>
             <div
               class="bg-gray-100 rounded-lg max-w-full lg:max-w-xl mx-auto p-10"
@@ -84,6 +87,9 @@ export default {
     onClose() {
       this.$store.commit('setMissionSelected', null)
       this.$emit('closed')
+      if (this.step == 'share') {
+        this.$router.push('/user/missions')
+      }
     },
   },
 }
