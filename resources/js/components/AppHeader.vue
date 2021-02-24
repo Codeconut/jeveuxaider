@@ -251,26 +251,16 @@
         class="flex h-full items-center md:hidden"
         @mission-search-clicked="$store.commit('toggleSearchOverlay')"
       />
-
-      <!-- DIALOG MISSION -->
-      <transition name="fade">
-        <SearchOverlay
-          v-if="$store.getters.searchOverlay"
-          @submitted="$store.commit('toggleSearchOverlay')"
-          @closed="$store.commit('toggleSearchOverlay')"
-        />
-      </transition>
     </div>
   </header>
 </template>
 
 <script>
 import JdmaBenevole from '@/components/JdmaBenevole.vue'
-import SearchOverlay from '@/components/SearchOverlay.vue'
 
 export default {
   name: 'AppHeader',
-  components: { JdmaBenevole, SearchOverlay },
+  components: { JdmaBenevole },
   props: {
     showMenu: {
       type: Boolean,

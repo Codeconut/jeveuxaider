@@ -12,6 +12,7 @@ Vue.use(Vuex)
 const state = {
   isAppLoaded: false,
   searchOverlay: false,
+  softGateOverlay: true,
   collectivities: null,
   sidebar: true,
   loading: false,
@@ -86,6 +87,9 @@ const mutations = {
   },
   toggleSearchOverlay: (state) => {
     state.searchOverlay = !state.searchOverlay
+  },
+  toggleSoftGateOverlay: (state) => {
+    state.softGateOverlay = !state.softGateOverlay
   },
   setShowAvisBenevole: (state, value) => {
     state.showAvisBenevole = value

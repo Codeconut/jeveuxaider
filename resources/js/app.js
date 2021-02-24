@@ -42,6 +42,9 @@ import ProfileLayout from '@/layouts/ProfileLayout'
 import RegisterStepsLayout from '@/layouts/RegisterStepsLayout'
 import MessagesLayout from '@/layouts/MessagesLayout'
 
+import SearchOverlay from '@/components/overlays/SearchOverlay.vue'
+import SoftGateOverlay from '@/components/overlays/SoftGateOverlay'
+
 Vue.component('DefaultLayout', DefaultLayout)
 Vue.component('NoHeaderLayout', NoHeaderLayout)
 Vue.component('NoFooterLayout', NoFooterLayout)
@@ -53,6 +56,8 @@ Vue.component('MessagesLayout', MessagesLayout)
 
 Vue.component('AppHeader', AppHeader)
 Vue.component('AppFooter', AppFooter)
+Vue.component('SearchOverlay', SearchOverlay)
+Vue.component('SoftGateOverlay', SoftGateOverlay)
 Vue.component('Breadcrumb', Breadcrumb)
 Vue.component('MobileMenu', MobileMenu)
 Vue.component('DropdownFrontUser', DropdownFrontUser)

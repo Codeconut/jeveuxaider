@@ -3,6 +3,18 @@
     <AppHeader />
     <router-view :key="$route.fullPath" />
     <AppFooter />
+    <transition name="fade">
+      <SearchOverlay
+        v-if="$store.getters.searchOverlay"
+        @submitted="$store.commit('toggleSearchOverlay')"
+        @closed="$store.commit('toggleSearchOverlay')"
+      />
+      <SoftGateOverlay
+        v-if="$store.getters.softGateOverlay"
+        @submitted="$store.commit('toggleSoftGateOverlay')"
+        @closed="$store.commit('toggleSoftGateOverlay')"
+      />
+    </transition>
   </div>
 </template>
 

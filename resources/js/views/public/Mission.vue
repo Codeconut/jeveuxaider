@@ -201,7 +201,7 @@
                   />
 
                   <div class="mt-6">
-                    <template v-if="mission.state">
+                    <!-- <template v-if="mission.state">
                       <template v-if="mission.state == 'Validée'">
                         <template v-if="mission.has_places_left">
                           <template v-if="$store.getters.isLogged">
@@ -246,7 +246,9 @@
                           {{ mission.state }}
                         </span>
                       </template>
-                    </template>
+                    </template> -->
+
+                    <ButtonJeProposeMonAide :mission="mission" />
                   </div>
 
                   <!-- <p
@@ -520,7 +522,7 @@
                 elle pour obtenir plus de précisions.
               </p>
               <div class="mt-10 flex justify-center z-10 relative">
-                <template v-if="mission.has_places_left">
+                <!-- <template v-if="mission.has_places_left">
                   <template v-if="$store.getters.isLogged">
                     <template v-if="isNotResponsableOfMission">
                       <el-button
@@ -550,10 +552,16 @@
                       class="flex items-center justify-center px-12 py-3 pb-4 border border-transparent text-2xl leading-9 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
                       @click="dialogProposerAide = true"
                     >
-                      Proposer votre aide
+                      Je propose mon aide
                     </button>
                   </template>
-                </template>
+                </template> -->
+                <button
+                  class="flex items-center justify-center px-12 py-3 pb-4 border border-transparent text-2xl leading-9 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+                  @click="$store.commit('toggleSearchOverlay')"
+                >
+                  Je propose mon aidee
+                </button>
               </div>
               <div class="mt-8 z-1">
                 <div class="text-center justify-center">
@@ -832,6 +840,7 @@ import { getMission } from '@/api/mission'
 import { addParticipation } from '@/api/participation'
 import { fetchStructureAvailableMissions } from '@/api/structure'
 import FrontMissionLoading from '@/components/loadings/FrontMissionLoading'
+import ButtonJeProposeMonAide from '@/components/ButtonJeProposeMonAide'
 import ReadMore from '@/components/ReadMore'
 import dayjs from 'dayjs'
 
@@ -859,6 +868,7 @@ export default {
   components: {
     FrontMissionLoading,
     ReadMore,
+    ButtonJeProposeMonAide,
   },
   props: {
     id: {
