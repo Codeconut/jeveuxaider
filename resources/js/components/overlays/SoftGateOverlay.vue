@@ -22,7 +22,7 @@
               Participez à cette mission
             </div>
             <div
-              class="bg-gray-100 rounded-lg max-w-full lg:max-w-2xl mx-auto p-10"
+              class="bg-gray-100 rounded-lg max-w-full lg:max-w-xl mx-auto p-10"
             >
               <SoftGateEmail
                 v-if="step == 'email'"
@@ -34,7 +34,11 @@
                 :form="datas"
                 @next="step = 'participate'"
               />
-              <SoftGateParticipate v-if="step == 'participate'" />
+              <SoftGateParticipate
+                v-if="step == 'participate'"
+                @next="step = 'share'"
+              />
+              <SoftGateShare v-if="step == 'share'" @next="onClose" />
             </div>
           </div>
         </div>
@@ -47,10 +51,16 @@
 import SoftGateEmail from '@/components/overlays/soft-gate/SoftGateEmail'
 import SoftGateLogin from '@/components/overlays/soft-gate/SoftGateLogin'
 import SoftGateParticipate from '@/components/overlays/soft-gate/SoftGateParticipate'
+import SoftGateShare from '@/components/overlays/soft-gate/SoftGateShare'
 
 export default {
   name: 'SoftGateOverlay',
-  components: { SoftGateEmail, SoftGateLogin, SoftGateParticipate },
+  components: {
+    SoftGateEmail,
+    SoftGateLogin,
+    SoftGateParticipate,
+    SoftGateShare,
+  },
   data() {
     return {
       step: 'email',

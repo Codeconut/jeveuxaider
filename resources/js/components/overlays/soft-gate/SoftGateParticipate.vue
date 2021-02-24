@@ -4,10 +4,14 @@
       <div class="text-gray-900 font-extrabold text-3xl">
         Proposez votre aide
       </div>
-      <div class="text-gray-500 text-xl">
+      <div class="text-gray-500 text-xl max-w-md mx-auto">
         Vous allez être mis en relation avec
-        {{ $store.getters.missionSelected.responsable.first_name }}, responsable
-        de la mission chez {{ $store.getters.missionSelected.structure.name }}.
+        <strong>{{
+          $store.getters.missionSelected.responsable.first_name
+        }}</strong
+        >, responsable de la mission chez
+        <strong>{{ $store.getters.missionSelected.structure.name }}</strong
+        >.
       </div>
     </div>
     <div class="mx-auto max-w-sm">
@@ -19,15 +23,21 @@
         :hide-required-asterisk="true"
       >
         <el-form-item prop="content">
-          <el-input
+          <textarea
             v-model="form.content"
             placeholder=""
-            :autosize="{ minRows: 3, maxRows: 8 }"
-            type="textarea"
-            :autofocus="true"
+            class="input-shadow w-full bg-white rounded-lg border-0 p-6 leading-6 text-gray-500"
+            rows="6"
             autocomplete="off"
-          ></el-input>
+          ></textarea>
         </el-form-item>
+        <el-button
+          :loading="loading"
+          class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-2xl lg:text-xl leading-6 rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+          @click.prevent="onSubmit"
+        >
+          Envoyer
+        </el-button>
       </el-form>
     </div>
   </div>
@@ -40,7 +50,7 @@ export default {
   name: 'SoftGateParticipate',
   data() {
     return {
-      loading: true,
+      loading: false,
       form: {
         content: `Bonjour ${this.$store.getters.missionSelected.responsable.first_name},\nJe souhaite participer à cette mission et apporter mon aide. \nJe me tiens disponible pour échanger et débuter la mission 🙂\n${this.$store.getters.user.profile.first_name}`,
       },
@@ -71,7 +81,6 @@ export default {
             this.form.content
           )
             .then(() => {
-              this.$router.push('/messages')
               window.apieng && window.apieng('trackApplication')
               this.$message({
                 message:
@@ -79,6 +88,7 @@ export default {
                 type: 'success',
               })
               this.loading = false
+              this.$emit('next')
             })
             .catch(() => {
               this.loading = false
