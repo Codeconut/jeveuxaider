@@ -1,10 +1,12 @@
 <template>
   <div>
     <div class="text-center mb-6">
-      <div class="text-gray-900 font-extrabold text-3xl">
+      <div
+        class="text-gray-900 font-extrabold text-2xl lg:text-3xl leading-8 mb-2 lg:mb-3"
+      >
         Proposez votre aide
       </div>
-      <div class="text-gray-500 text-xl max-w-md mx-auto">
+      <div class="text-gray-500 text-lg lg:text-xl max-w-md mx-auto">
         Vous allez être mis en relation avec
         <strong>{{
           $store.getters.missionSelected.responsable.first_name
@@ -27,13 +29,13 @@
             v-model="form.content"
             placeholder=""
             class="input-shadow w-full bg-white rounded-lg border-0 p-6 leading-6 text-gray-500"
-            rows="6"
+            rows="7"
             autocomplete="off"
           ></textarea>
         </el-form-item>
         <el-button
           :loading="loading"
-          class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-2xl lg:text-xl leading-6 rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+          class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-xl leading-6 rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
           @click.prevent="onSubmit"
         >
           Envoyer

@@ -25,7 +25,7 @@
               <template v-else>Merci pour votre engagement</template>
             </div>
             <div
-              class="bg-gray-100 rounded-lg max-w-full lg:max-w-xl mx-auto p-10"
+              class="bg-gray-100 rounded-lg max-w-full lg:max-w-xl mx-auto p-6 lg:p-10"
             >
               <SoftGateEmail
                 v-if="step == 'email'"
@@ -79,7 +79,7 @@ export default {
   },
   created() {
     if (this.$store.getters.isLogged) {
-      this.step = 'share'
+      this.step = 'participate'
     }
   },
   methods: {

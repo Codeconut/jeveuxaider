@@ -1,10 +1,14 @@
 <template>
   <div>
     <div class="text-center mb-6">
-      <div class="text-gray-900 font-extrabold text-3xl">
+      <div
+        class="text-gray-900 font-extrabold text-2xl lg:text-3xl leading-8 mb-2 lg:mb-3"
+      >
         {{ form.first_name }}, ravi de vous retrouver !
       </div>
-      <div class="text-gray-500 text-xl">Renseignez votre mot de passe</div>
+      <div class="text-gray-500 text-lg lg:text-xl">
+        Renseignez votre mot de passe
+      </div>
     </div>
     <div class="mx-auto max-w-sm">
       <el-form
@@ -15,7 +19,7 @@
       >
         <el-form-item prop="email" class="mb-5">
           <div
-            class="input-shadow relative text-center bg-white px-5 py-1 w-full rounded-full text-gray-400 placeholder-gray-400 focus:outline-none focus:shadow-outline"
+            class="input-shadow relative text-center bg-white px-5 py-1 w-full rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline"
           >
             {{ form.email }}
 
@@ -38,7 +42,7 @@
         </el-form-item>
 
         <button
-          class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-2xl lg:text-xl leading-6 rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+          class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-xl leading-6 rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
           @click.prevent="onSubmit"
         >
           Se connecter
