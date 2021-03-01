@@ -4,7 +4,7 @@
       <template v-if="mission.state == 'Validée'">
         <template v-if="isAlreadyRegistered">
           <router-link to="/user/missions" :class="btnClasses">
-            Vous êtes inscrit
+            Vous êtes inscrit(e)
           </router-link>
         </template>
         <template v-else>
