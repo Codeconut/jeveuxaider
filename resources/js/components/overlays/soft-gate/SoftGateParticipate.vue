@@ -32,7 +32,7 @@
           <textarea
             v-model="form.content"
             placeholder=""
-            class="input-shadow w-full bg-white rounded-lg border-0 p-6 leading-6 text-gray-500"
+            class="input-shadow w-full bg-white rounded-lg border-0 p-6 leading-6 text-gray-900"
             rows="7"
             autocomplete="off"
           ></textarea>

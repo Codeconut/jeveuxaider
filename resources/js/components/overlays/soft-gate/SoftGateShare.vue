@@ -30,7 +30,7 @@
         </a>
         <a
           target="_blank"
-          :href="`https://twitter.com/intent/tweet?url=${baseUrl}${$router.currentRoute.fullPath}`"
+          :href="`https://twitter.com/intent/tweet?url=${message}${baseUrl}${$router.currentRoute.fullPath}`"
           class="input-shadow bg-white h-12 w-12 lg:h-24 lg:w-24 rounded-full flex justify-center items-center cursor-pointer tracking-wide shadow-lg hover:scale-105 transform transition duration-150 ease-in-out"
         >
           <img
@@ -41,7 +41,7 @@
         </a>
         <a
           target="_blank"
-          :href="`https://www.linkedin.com/shareArticle?mini=true&url=${baseUrl}${$router.currentRoute.fullPath}`"
+          :href="`https://www.linkedin.com/shareArticle?mini=true&url=${baseUrl}${$router.currentRoute.fullPath}&title=${message}`"
           class="input-shadow bg-white h-12 w-12 lg:h-24 lg:w-24 rounded-full flex justify-center items-center cursor-pointer tracking-wide shadow-lg hover:scale-105 transform transition duration-150 ease-in-out"
         >
           <img
@@ -51,7 +51,7 @@
           />
         </a>
         <a
-          :href="`mailto:?&subject=${$store.getters.missionSelected.name}&body=${baseUrl}${$router.currentRoute.fullPath}`"
+          :href="`mailto:?&subject=${$store.getters.missionSelected.name}&body=${message}${baseUrl}${$router.currentRoute.fullPath}`"
           class="input-shadow bg-white h-12 w-12 lg:h-24 lg:w-24 rounded-full flex justify-center items-center cursor-pointer tracking-wide shadow-lg hover:scale-105 transform transition duration-150 ease-in-out"
         >
           <img
@@ -76,6 +76,8 @@ export default {
   name: 'SoftGateShare',
   data() {
     return {
+      message:
+        "J'ai trouvé ma future mission de bénévolat sur JeVeuxAider. Rejoignez le mouvement %23ChacunPourTous ",
       baseUrl: process.env.MIX_API_BASE_URL,
     }
   },

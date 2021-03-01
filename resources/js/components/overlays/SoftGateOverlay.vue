@@ -79,7 +79,7 @@ export default {
   },
   created() {
     if (this.$store.getters.isLogged) {
-      this.step = 'participate'
+      this.step = 'share'
     }
   },
   methods: {

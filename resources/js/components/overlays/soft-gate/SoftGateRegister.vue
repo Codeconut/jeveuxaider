@@ -16,6 +16,7 @@
         :model="form"
         :rules="rules"
         class="mb-0 form-center"
+        @submit.prevent.native="onSubmit"
       >
         <el-form-item prop="email" class="mb-5">
           <div
@@ -38,7 +39,6 @@
             type="password"
             class="input-shadow text-center bg-white px-5 py-1 w-full rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline"
             placeholder="Votre mot de passe"
-            @keyup.enter="onSubmit"
           />
         </el-form-item>
 
@@ -88,13 +88,13 @@
           />
         </el-form-item>
 
-        <button
+        <el-button
           :loading="loading"
           class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-xl leading-6 rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
           @click.prevent="onSubmit"
         >
           S'inscrire
-        </button>
+        </el-button>
       </el-form>
 
       <div class="mt-6 mb-3">

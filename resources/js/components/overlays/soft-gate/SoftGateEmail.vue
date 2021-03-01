@@ -17,7 +17,7 @@
       <div
         class="text-gray-900 font-extrabold text-2xl lg:text-3xl leading-8 mb-2 lg:mb-3"
       >
-        Connectez-vous !
+        Avant toute chose
       </div>
       <div class="text-gray-500 font-semibold text-lg lg:text-xl">
         Renseignez votre e-mail
@@ -29,6 +29,7 @@
         :model="form"
         :rules="rules"
         class="mb-0 form-center"
+        @submit.prevent.native="onSubmit"
       >
         <el-form-item prop="email" class="mb-5">
           <input
@@ -36,16 +37,17 @@
             :autofocus="true"
             class="input-shadow text-center bg-white px-5 py-1 w-full rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline"
             placeholder="Votre e-mail"
-            @keyup.enter="onSubmit"
+            @keyup.enter.prevent="onSubmit"
           />
         </el-form-item>
 
-        <button
+        <el-button
+          :loading="loading"
           class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-xl leading-6 rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
           @click.prevent="onSubmit"
         >
           Continuer
-        </button>
+        </el-button>
       </el-form>
     </div>
   </div>
@@ -60,6 +62,7 @@ export default {
   // components: { FranceConnect },
   data() {
     return {
+      loading: false,
       form: {},
       rules: {
         email: [
@@ -81,13 +84,19 @@ export default {
     onSubmit() {
       this.$refs['emailForm'].validate((valid) => {
         if (valid) {
-          getUserFirstname(this.form.email).then((res) => {
-            if (!res.data) {
-              this.$emit('register', { email: this.form.email })
-            } else {
-              this.$emit('login', res.data)
-            }
-          })
+          this.loading = true
+          getUserFirstname(this.form.email)
+            .then((res) => {
+              this.loading = false
+              if (!res.data) {
+                this.$emit('register', { email: this.form.email })
+              } else {
+                this.$emit('login', res.data)
+              }
+            })
+            .catch(() => {
+              this.loading = false
+            })
         }
       })
     },
