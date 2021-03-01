@@ -19,8 +19,8 @@
         ref="participateForm"
         :model="form"
         :rules="rules"
-        class="mt-4"
         :hide-required-asterisk="true"
+        class="mt-4 mb-0 form-center"
       >
         <el-form-item prop="content">
           <textarea

@@ -522,46 +522,7 @@
                 elle pour obtenir plus de précisions.
               </p>
               <div class="mt-10 flex justify-center z-10 relative">
-                <!-- <template v-if="mission.has_places_left">
-                  <template v-if="$store.getters.isLogged">
-                    <template v-if="isNotResponsableOfMission">
-                      <el-button
-                        v-if="isAlreadyRegistered"
-                        class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 pb-4 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                        @click="handleClickParticipate"
-                        >Je propose mon aide</el-button
-                      >
-                      <router-link
-                        v-else
-                        to="/user/missions"
-                        class="max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full text-green-800 bg-green-100 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                        >Vous êtes déjà inscrit !</router-link
-                      >
-                    </template>
-                    <template v-else>
-                      <router-link
-                        :to="`/dashboard/mission/${mission.id}`"
-                        class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 pb-4 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                        >Tableau de bord</router-link
-                      >
-                    </template>
-                  </template>
-
-                  <template v-else>
-                    <button
-                      class="flex items-center justify-center px-12 py-3 pb-4 border border-transparent text-2xl leading-9 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                      @click="dialogProposerAide = true"
-                    >
-                      Je propose mon aide
-                    </button>
-                  </template>
-                </template> -->
-                <button
-                  class="flex items-center justify-center px-12 py-3 pb-4 border border-transparent text-2xl leading-9 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                  @click="$store.commit('toggleSearchOverlay')"
-                >
-                  Je propose mon aidee
-                </button>
+                <ButtonJeProposeMonAide :mission="mission" size="big" />
               </div>
               <div class="mt-8 z-1">
                 <div class="text-center justify-center">

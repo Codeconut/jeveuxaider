@@ -1,0 +1,236 @@
+<template>
+  <div>
+    <div class="text-center mb-6">
+      <div class="text-gray-900 font-extrabold text-3xl">
+        Rejoignez le mouvement !
+      </div>
+      <div class="text-gray-500 text-xl">
+        Créez rapidement votre compte Bénévole
+      </div>
+    </div>
+    <div class="mx-auto max-w-sm">
+      <el-form
+        ref="registerForm"
+        :model="form"
+        :rules="rules"
+        class="mb-0 form-center"
+      >
+        <el-form-item prop="email" class="mb-5">
+          <div
+            class="input-shadow relative text-center bg-white px-5 py-1 w-full rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline"
+          >
+            {{ form.email }}
+
+            <img
+              class="absolute inset-y-0 my-auto"
+              style="right: 15px"
+              src="/images/icones/email-check.svg"
+              alt="Email valide"
+            />
+          </div>
+        </el-form-item>
+
+        <el-form-item prop="password" class="mb-5">
+          <input
+            v-model="form.password"
+            type="password"
+            class="input-shadow text-center bg-white px-5 py-1 w-full rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline"
+            placeholder="Votre mot de passe"
+            @keyup.enter="onSubmit"
+          />
+        </el-form-item>
+
+        <div class="flex space-x-4">
+          <el-form-item prop="first_name" class="w-full sm:w-1/2 mb-5">
+            <input
+              v-model="form.first_name"
+              class="input-shadow text-center bg-white px-5 py-1 w-full rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline"
+              label="Prénom"
+              placeholder="Prénom"
+            />
+          </el-form-item>
+          <el-form-item prop="last_name" class="w-full sm:w-1/2 mb-5">
+            <input
+              v-model="form.last_name"
+              class="input-shadow text-center bg-white px-5 py-1 w-full rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline"
+              label="Nom"
+              placeholder="Nom"
+            />
+          </el-form-item>
+        </div>
+        <div class="flex space-x-4">
+          <el-form-item prop="zip" class="w-full sm:w-1/2 mb-5">
+            <input
+              v-model="form.zip"
+              class="input-shadow text-center bg-white px-5 py-1 w-full rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline"
+              label="Code postal"
+              placeholder="Code Postal"
+            />
+          </el-form-item>
+          <el-form-item prop="birthday" class="w-full sm:w-1/2 mb-5">
+            <input
+              v-model="form.birthday"
+              v-mask="'##/##/####'"
+              class="input-shadow text-center bg-white px-5 py-1 w-full rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline"
+              label="Date de naissance"
+              placeholder="Date de naissance"
+            />
+          </el-form-item>
+        </div>
+        <el-form-item prop="mobile" class="mb-5">
+          <input
+            v-model="form.mobile"
+            class="input-shadow text-center bg-white px-5 py-1 w-full rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline"
+            label="Mobile"
+            placeholder="Téléphone mobile"
+          />
+        </el-form-item>
+
+        <button
+          :loading="loading"
+          class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-2xl lg:text-xl leading-6 rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+          @click.prevent="onSubmit"
+        >
+          S'inscrire
+        </button>
+      </el-form>
+    </div>
+  </div>
+</template>
+
+<script>
+import dayjs from 'dayjs'
+var customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
+
+export default {
+  name: 'SoftGateRegister',
+  props: {
+    form: {
+      type: Object,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      loading: false,
+      rules: {
+        email: [
+          {
+            type: 'email',
+            message: "Le format de l'email n'est pas correct",
+            trigger: 'blur',
+          },
+          {
+            required: true,
+            message: 'Champ obligatoire',
+            trigger: 'blur',
+          },
+        ],
+        first_name: [
+          {
+            required: true,
+            message: 'Champ obligatoire',
+            trigger: 'blur',
+          },
+        ],
+        last_name: [
+          {
+            required: true,
+            message: 'Nom obligatoire',
+            trigger: 'blur',
+          },
+        ],
+        birthday: [
+          {
+            required: true,
+            message: 'Champ obligatoire',
+            trigger: 'blur',
+          },
+        ],
+        zip: [
+          {
+            required: true,
+            message: 'Champ obligatoire',
+            trigger: 'blur',
+          },
+          {
+            pattern: /^\d+$/,
+            message: 'Format incorrect',
+            trigger: 'blur',
+          },
+          {
+            min: 5,
+            max: 5,
+            message: 'Format erroné',
+            trigger: 'blur',
+          },
+        ],
+        mobile: [
+          {
+            required: true,
+            message: 'Champ obligatoire',
+            trigger: 'blur',
+          },
+          {
+            pattern: /^[+|\s|\d]*$/,
+            message: 'Format incorrect',
+            trigger: 'blur',
+          },
+        ],
+        password: [
+          {
+            required: true,
+            message: 'Champ obligatoire',
+            trigger: 'change',
+          },
+          {
+            min: 8,
+            message: 'Votre mot de passe doit contenir au moins 8 caractères',
+            trigger: 'blur',
+          },
+        ],
+      },
+    }
+  },
+  created() {},
+  methods: {
+    onSubmit() {
+      this.$refs['registerForm'].validate((valid) => {
+        if (valid) {
+          this.loading = true
+          let birthdayValidFormat = dayjs(
+            this.form.birthday,
+            'DD/MM/YYYY'
+          ).format('YYYY-MM-DD')
+          this.$store
+            .dispatch('auth/registerVolontaire', {
+              email: this.form.email,
+              password: this.form.password,
+              first_name: this.form.first_name,
+              last_name: this.form.last_name,
+              mobile: this.form.mobile,
+              birthday: birthdayValidFormat,
+              zip: this.form.zip,
+              service_civique: this.form.service_civique,
+            })
+            .then(() => {
+              this.loading = false
+              this.$emit('next')
+            })
+            .catch(() => {
+              this.loading = false
+            })
+        } else {
+          this.loading = false
+        }
+      })
+    },
+  },
+}
+</script>
+
+<style lang="sass" scoped>
+::placeholder
+  font-weight: 500
+</style>

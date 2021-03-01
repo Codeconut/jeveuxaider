@@ -7,7 +7,12 @@
       <div class="text-gray-500 text-xl">Renseignez votre mot de passe</div>
     </div>
     <div class="mx-auto max-w-sm">
-      <el-form ref="loginForm" :model="form" :rules="rules" class="mb-0">
+      <el-form
+        ref="loginForm"
+        :model="form"
+        :rules="rules"
+        class="mb-0 form-center"
+      >
         <el-form-item prop="email" class="mb-5">
           <div
             class="input-shadow relative text-center bg-white px-5 py-1 w-full rounded-full text-gray-400 placeholder-gray-400 focus:outline-none focus:shadow-outline"
@@ -22,7 +27,7 @@
             />
           </div>
         </el-form-item>
-        <el-form-item prop="password" class="mb-4">
+        <el-form-item prop="password" class="mb-5">
           <input
             v-model="form.password"
             type="password"
@@ -54,6 +59,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       rules: {
         email: [
           {
@@ -67,14 +73,14 @@ export default {
             trigger: 'blur',
           },
         ],
+        password: [
+          {
+            required: true,
+            message: 'Renseignez votre mot de passe',
+            trigger: 'change',
+          },
+        ],
       },
-      password: [
-        {
-          required: true,
-          message: 'Choisissez votre mot de passe',
-          trigger: 'change',
-        },
-      ],
     }
   },
   created() {},
@@ -82,12 +88,14 @@ export default {
     onSubmit() {
       this.$refs['loginForm'].validate((valid) => {
         if (valid) {
+          this.loading = true
           this.$store
             .dispatch('auth/login', {
               email: this.form.email,
               password: this.form.password,
             })
             .then(() => {
+              this.loading = false
               this.$emit('next')
             })
         }

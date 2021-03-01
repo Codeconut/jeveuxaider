@@ -483,7 +483,7 @@ export default {
           },
           {
             min: 8,
-            message: 'Votre mot de passe doit contenir au moins 8 charactères',
+            message: 'Votre mot de passe doit contenir au moins 8 caractères',
             trigger: 'blur',
           },
         ],

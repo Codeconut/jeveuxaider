@@ -22,7 +22,7 @@
       <el-form-item prop="email" class="mb-5">
         <input
           v-model.trim="form.email"
-          class="input-shadow text-center bg-white px-5 py-1 w-full rounded-full text-gray-400 placeholder-gray-400 focus:outline-none focus:shadow-outline"
+          class="input-shadow text-center bg-white px-5 py-1 w-full rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline"
           placeholder="Votre e-mail"
           @keyup.enter="onSubmit"
         />

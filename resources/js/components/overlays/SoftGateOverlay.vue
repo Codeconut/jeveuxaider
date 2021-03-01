@@ -37,6 +37,11 @@
                 :form="datas"
                 @next="step = 'participate'"
               />
+              <SoftGateRegister
+                v-if="step == 'register'"
+                :form="datas"
+                @next="step = 'participate'"
+              />
               <SoftGateParticipate
                 v-if="step == 'participate'"
                 @next="step = 'share'"
@@ -53,6 +58,7 @@
 <script>
 import SoftGateEmail from '@/components/overlays/soft-gate/SoftGateEmail'
 import SoftGateLogin from '@/components/overlays/soft-gate/SoftGateLogin'
+import SoftGateRegister from '@/components/overlays/soft-gate/SoftGateRegister'
 import SoftGateParticipate from '@/components/overlays/soft-gate/SoftGateParticipate'
 import SoftGateShare from '@/components/overlays/soft-gate/SoftGateShare'
 
@@ -61,6 +67,7 @@ export default {
   components: {
     SoftGateEmail,
     SoftGateLogin,
+    SoftGateRegister,
     SoftGateParticipate,
     SoftGateShare,
   },
