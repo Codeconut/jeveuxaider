@@ -414,15 +414,6 @@ const routeOptions = [
     },
   },
   {
-    path: '/dashboard/profile/:role/add',
-    name: 'DashboardProfileForm',
-    singleName: 'DashboardProfileFormAdd',
-    props: (route) => ({ mode: 'add', role: route.params.role }),
-    meta: {
-      roles: ['admin'],
-    },
-  },
-  {
     path: '/dashboard/profile/:id/edit',
     name: 'DashboardProfileForm',
     singleName: 'DashboardProfileFormEdit',

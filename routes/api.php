@@ -167,9 +167,6 @@ Route::group(['middleware' => ['auth:api', 'has.context.role.header' ]], functio
 // ONLY ADMIN
 Route::group(['middleware' => ['auth:api', 'is.admin']], function () {
 
-    // PROFILES
-    Route::post('profile', 'Api\ProfileController@store');
-
     // TRASH
     Route::get('trash/structures', 'Api\TrashController@structures');
     Route::get('trash/missions', 'Api\TrashController@missions');
