@@ -21,5 +21,12 @@ export default {
       }
     },
   },
+  methods: {
+    defaultThumbnail(e) {
+      // @todo vraie image par défaut
+      e.target.src = '/images/domaines/3_3.jpg'
+      e.target.srcset = '/images/domaines/3_3@2x.jpg 2x'
+    },
+  },
 }
 </script>
