@@ -2,7 +2,7 @@
   <div class="relative">
     <template v-if="mission.state">
       <template v-if="mission.state == 'Validée'">
-        <template v-if="isAlreadyRegistered">
+        <template v-if="$store.getters.isLogged && isAlreadyRegistered">
           <router-link to="/user/missions" :class="btnClasses">
             Vous êtes inscrit(e)
           </router-link>
@@ -60,14 +60,18 @@ export default {
       return classes
     },
     hasParticipation() {
-      return this.$store.getters.profile.participations.filter(
-        (participation) =>
-          participation.mission_id == this.mission.id &&
-          participation.state != 'Annulée'
-      )
+      return this.$store.getters.isLogged && this.$store.getters.profile
+        ? this.$store.getters.profile.participations.filter(
+            (participation) =>
+              participation.mission_id == this.mission.id &&
+              participation.state != 'Annulée'
+          )
+        : []
     },
     isNotResponsableOfMission() {
-      return this.$store.getters.profile.id != this.mission.responsable_id
+      return this.$store.getters.isLogged && this.$store.getters.profile
+        ? this.$store.getters.profile.id != this.mission.responsable_id
+        : true
     },
     isAlreadyRegistered() {
       return this.hasParticipation.length > 0 ? true : false

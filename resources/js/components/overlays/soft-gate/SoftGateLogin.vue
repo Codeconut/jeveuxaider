@@ -34,6 +34,7 @@
         <el-form-item prop="password" class="mb-5">
           <input
             v-model="form.password"
+            :autofocus="true"
             type="password"
             class="input-shadow text-center bg-white px-5 py-1 w-full rounded-full text-gray-400 placeholder-gray-400 focus:outline-none focus:shadow-outline"
             placeholder="Votre mot de passe"
