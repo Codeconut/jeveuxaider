@@ -13,7 +13,7 @@
               <h1
                 class="mt-10 lg:mt-24 text-4xl tracking-tight leading-10 font-bold text-white sm:leading-none sm:text-6xl lg:text-5xl xl:text-6xl"
               >
-                Devenez bénévole avec JeVeuxAider
+                Devenez bénévole avec JeVeuxAider.gouv.fr
               </h1>
 
               <ul class="pt-6 lg:pt-14">
@@ -249,7 +249,8 @@
                             v-model="form.service_civique"
                             @change="handleServiceCiviqueChange"
                           >
-                            Je suis volontaire en Service Civique
+                            Cochez si vous êtes déjà volontaire en Service
+                            Civique
                           </el-checkbox>
                         </el-form-item>
                       </div>
@@ -285,7 +286,7 @@
                           target="_blank"
                           class="font-medium text-gray-900 hover:underline"
                         >
-                          charte de JeVeuxAider
+                          charte de JeVeuxAider.gouv.fr
                         </router-link>
                         <br />
                         <span>Déjà inscrit ? </span>
@@ -313,7 +314,7 @@
           class="text-center leading-8 pb-8 text-gray-800 text-sm font-medium text-3xl tracking-tight px-4"
         >
           Plus de <b class="font-bold">4000 organisations</b> ont déjà rejoint
-          JeVeuxAider
+          JeVeuxAider.gouv.fr
         </h3>
         <div class="overflow-hidden">
           <div class="flex flex-wrap items-center justify-center -m-4 sm:-m-8">
@@ -375,8 +376,8 @@
                 J’ai eu la chance de pouvoir me rendre utile en faisant une
                 distribution de repas pour les SDF de Nancy. Une expérience qui
                 ne laisse pas indifférent … J'ai des souvenirs plein la tête.
-                Maintenant je continue mon chemin avec JeVeuxAider. Je me sens
-                utile et citoyenne.
+                Maintenant je continue mon chemin avec JeVeuxAider.gouv.fr. Je
+                me sens utile et citoyenne.
               </p>
             </div>
             <footer class="mt-6">
@@ -420,10 +421,10 @@
               </svg>
               <p class="relative">
                 Pendant la crise de Covid-19, je ressentais le besoin de
-                m’engager et d’aider. Je me suis inscrite sur JeVeuxAider et
-                j’ai participé au dispositif Covidom, aux côtés des
-                professionnels de l'APHP et d'une équipe de bénévoles très
-                motivés. Notre mission : nous assurer que tous les patients
+                m’engager et d’aider. Je me suis inscrite sur
+                JeVeuxAider.gouv.fr et j’ai participé au dispositif Covidom, aux
+                côtés des professionnels de l'APHP et d'une équipe de bénévoles
+                très motivés. Notre mission : nous assurer que tous les patients
                 puissent bénéficier d’un suivi médical à distance. Covidom
                 montre que le partenariat entre public, privé et société civile
                 est non seulement possible mais surtout incroyablement efficace

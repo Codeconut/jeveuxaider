@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 // AUTH
 Route::post('register/volontaire', 'Api\PassportController@registerVolontaire');
 Route::post('register/responsable', 'Api\PassportController@registerResponsable');
-Route::post('register/invitation', 'Api\PassportController@registerInvitation');
 Route::post('password/forgot', 'Api\PassportController@forgotPassword');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
@@ -39,8 +38,10 @@ Route::get('thematique/{slugOrId}/statistics', 'Api\ThematiqueController@statist
 
 Route::get('statistics/global', 'Api\StatisticsController@global');
 
-
 Route::post('sendinblue/contact', 'Api\SendInBlueController@store');
+
+Route::get('invitation/{token}', 'Api\InvitationController@show');
+Route::post('invitation/{token}/register', 'Api\InvitationController@register');
 
 Route::group(['middleware' => ['auth:api']], function () {
     // CONFIG
@@ -74,6 +75,10 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('conversations/{conversation}/messages', 'Api\ConversationsController@messages');
     Route::post('conversations/{conversation}/messages', 'Api\MessagesController@store');
 
+    Route::post('invitation/{token}/resend', 'Api\InvitationController@resend');
+    Route::post('invitation/{token}/accept', 'Api\InvitationController@accept');
+    Route::delete('invitation/{token}/delete', 'Api\InvitationController@delete');
+
     Route::post('logout', 'Api\PassportController@logout');
 });
 
@@ -93,6 +98,10 @@ Route::group(['middleware' => ['auth:api', 'has.context.role.header' ]], functio
     Route::get('structure/{structure}/members', 'Api\StructureController@members');
     Route::post('structure/{structure}/members', 'Api\StructureController@addMember');
     Route::delete('structure/{structure}/members/{member}', 'Api\StructureController@deleteMember');
+
+    // STRUCTURE INVITATIONS
+    Route::get('structure/{structure}/invitations', 'Api\StructureController@invitations');
+    Route::post('invitation', 'Api\InvitationController@store');
 
     // MISSIONS
     Route::get('missions', 'Api\MissionController@index');
@@ -155,9 +164,6 @@ Route::group(['middleware' => ['auth:api', 'has.context.role.header' ]], functio
 
 // ONLY ADMIN
 Route::group(['middleware' => ['auth:api', 'is.admin']], function () {
-
-    // PROFILES
-    Route::post('profile', 'Api\ProfileController@store');
 
     // TRASH
     Route::get('trash/structures', 'Api\TrashController@structures');
@@ -233,4 +239,7 @@ Route::group(['middleware' => ['auth:api', 'is.admin']], function () {
     Route::get('profiles/referents/departements/export', 'Api\ProfileController@exportReferentsDepartements');
     Route::get('profiles/referents/regions/export', 'Api\ProfileController@exportReferentsRegions');
     Route::get('profiles/responsables/export', 'Api\ProfileController@exportResponsables');
+
+    // INVITATIONS
+    Route::get('invitations', 'Api\InvitationController@index');
 });

@@ -36,8 +36,8 @@ export function declineParticipation(id, participation) {
   return request.post(`/api/participation/${id}/decline`, participation)
 }
 
-export function cancelParticipation(id) {
-  return request.post(`/api/participation/${id}/cancel`)
+export function cancelParticipation(id, participation) {
+  return request.post(`/api/participation/${id}/cancel`, participation)
 }
 
 export function deleteParticipation(id) {

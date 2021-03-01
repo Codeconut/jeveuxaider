@@ -76,9 +76,8 @@ request.interceptors.response.use(
       ) {
         store.dispatch('user/get')
       } else {
-        console.log(error.config.responseType)
+        console.log('error.config.responseType', error.config.responseType)
         if (error.config.responseType == 'blob') {
-          console.log('OK BLOB')
           return new Promise((resolve, reject) => {
             let reader = new FileReader()
             reader.onload = () => {

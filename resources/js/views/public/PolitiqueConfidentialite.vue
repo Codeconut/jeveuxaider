@@ -21,15 +21,16 @@
             </h2>
             <p>
               Instituée par la loi Egalité et Citoyenneté n° 2017-86 du 27
-              janvier 2017, JeVeuxAider permet à tous les citoyens et étrangers
-              résidents régulièrement sur le territoire français qui le souhaite
-              de s’engager à servir les valeurs de la République en participant
-              à des missions d'intérêt général, à titre bénévole et occasionnel.
+              janvier 2017, JeVeuxAider.gouv.fr permet à tous les citoyens et
+              étrangers résidents régulièrement sur le territoire français qui
+              le souhaite de s’engager à servir les valeurs de la République en
+              participant à des missions d'intérêt général, à titre bénévole et
+              occasionnel.
             </p>
             <p>
-              JeVeuxAider se matérialise par une plateforme numérique sur
-              laquelle s'inscrivent réservistes, responsables d'organismes
-              d'accueil et référents de JeVeuxAider.
+              JeVeuxAider.gouv.fr se matérialise par une plateforme numérique
+              sur laquelle s'inscrivent réservistes, responsables d'organismes
+              d'accueil et référents de JeVeuxAider.gouv.fr.
             </p>
             <p>
               Cette plateforme recueille des renseignements personnels afin de
@@ -217,8 +218,8 @@
             <p>
               Les destinataires des données sont le Haut-commissaire à
               l’engagement civique et ses conseillers, les agents désignés comme
-              référents de JeVeuxAider par les préfets de département et par les
-              réserves citoyennes partenaires, ainsi que les organismes
+              référents de JeVeuxAider.gouv.fr par les préfets de département et
+              par les réserves citoyennes partenaires, ainsi que les organismes
               d’accueil avec lesquels les réservistes ont pris contact.
             </p>
             Les réservistes peuvent demander à ce que leurs renseignements

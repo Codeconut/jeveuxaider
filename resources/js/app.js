@@ -20,6 +20,7 @@ import VueAnalytics from 'vue-analytics'
 import VueTheMask from 'vue-the-mask'
 import VScrollLock from 'v-scroll-lock'
 import VTooltip from 'v-tooltip'
+import vClickOutside from 'v-click-outside'
 
 import AppHeader from '@/components/AppHeader'
 import AppFooter from '@/components/AppFooter'
@@ -30,6 +31,7 @@ import VClamp from 'vue-clamp'
 import CKEditor from '@ckeditor/ckeditor5-vue'
 import VueMeta from 'vue-meta'
 import VueTypedJs from 'vue-typed-js'
+import VueClipboard from 'vue-clipboard2'
 
 import DefaultLayout from '@/layouts/DefaultLayout'
 import NoHeaderLayout from '@/layouts/NoHeaderLayout'
@@ -60,6 +62,8 @@ Vue.use(VueMeta, {
   refreshOnceOnNavigation: true,
 })
 
+Vue.use(vClickOutside)
+Vue.use(VueClipboard)
 Vue.use(VueTypedJs)
 Vue.use(Vue2Filters)
 Vue.use(PortalVue)

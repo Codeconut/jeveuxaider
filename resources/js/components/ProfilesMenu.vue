@@ -10,6 +10,9 @@
     <el-menu-item index="/dashboard/profiles/responsables"
       >Responsables</el-menu-item
     >
+    <el-menu-item index="/dashboard/profiles/invitations"
+      >Invitations</el-menu-item
+    >
   </el-menu>
 </template>
 

@@ -6,45 +6,24 @@
           {{ structure.name }}
         </div>
         <div class="mb-12 font-bold text-2xl text-gray-800">
-          Inviter un nouveau membre de votre équipe
+          Inviter un nouveau responsable
         </div>
       </div>
     </div>
     <div class="px-12">
       <el-form
-        ref="structureMembersAdd"
+        ref="invitationForm"
         :model="form"
         label-position="top"
         :rules="rules"
       >
-        <div class="mb-6 text-xl text-gray-800">Rôle de l'utilisateur</div>
-        <el-radio-group v-model="form.role" class="flex flex-col">
-          <el-radio class="mb-6 flex items-center" label="responsable">
-            <div>Responsable</div>
-            <div class="description">
-              Vous pouvez partager vos droits d'administration de votre compte
-              de structure d'accueil avec plusieurs personnes.
-            </div>
-          </el-radio>
-        </el-radio-group>
-        <div class="mt-12 flex mb-6 text-xl text-gray-800">
-          Informations générales
-        </div>
-
-        <div class="flex justify-between">
-          <el-form-item label="Prénom" prop="first_name" class="flex-1 mr-1">
-            <el-input v-model="form.first_name" placeholder="Prénom" />
-          </el-form-item>
-          <el-form-item label="Nom" prop="last_name" class="flex-1 ml-1">
-            <el-input v-model="form.last_name" placeholder="Nom de famille" />
-          </el-form-item>
-        </div>
         <el-form-item label="Email" prop="email">
           <el-input v-model.trim="form.email" placeholder="Email" />
         </el-form-item>
+
         <div class="flex pt-2">
           <el-button type="primary" :loading="loading" @click="onSubmit">
-            Ajouter un membre
+            Envoyer l'invitation
           </el-button>
         </div>
       </el-form>
@@ -53,7 +32,8 @@
 </template>
 
 <script>
-import { getStructure, inviteStructureMember } from '@/api/structure'
+import { getStructure } from '@/api/structure'
+import { addInvitation } from '@/api/user'
 
 export default {
   name: 'DashboardStructureMembersAdd',
@@ -67,7 +47,10 @@ export default {
     return {
       structure: {},
       form: {
-        role: 'responsable',
+        user_id: this.$store.getters.user.id,
+        role: 'responsable_organisation',
+        invitable_id: this.id,
+        invitable_type: 'App\\Models\\Structure',
       },
       rules: {
         email: [
@@ -79,20 +62,6 @@ export default {
           {
             required: true,
             message: 'Veuillez renseigner votre email',
-            trigger: 'blur',
-          },
-        ],
-        first_name: [
-          {
-            required: true,
-            message: 'Prénom obligatoire',
-            trigger: 'blur',
-          },
-        ],
-        last_name: [
-          {
-            required: true,
-            message: 'Nom obligatoire',
             trigger: 'blur',
           },
         ],
@@ -114,15 +83,14 @@ export default {
   methods: {
     onSubmit() {
       this.loading = true
-      this.$refs['structureMembersAdd'].validate((valid) => {
+      this.$refs['invitationForm'].validate((valid) => {
         if (valid) {
-          inviteStructureMember(this.id, this.form)
+          addInvitation(this.form)
             .then(() => {
               this.loading = false
               this.$router.push(`/dashboard/structure/${this.id}/members`)
               this.$message({
-                dangerouslyUseHTMLString: true,
-                message: `${this.form.first_name} ${this.form.last_name} fait maintenant partie de votre équipe. Une notification email lui a été envoyé.`,
+                message: `Une notification email a été envoyée à ${this.form.email}.`,
                 type: 'success',
               })
             })

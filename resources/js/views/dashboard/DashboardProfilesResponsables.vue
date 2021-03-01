@@ -9,6 +9,11 @@
           Utilisateurs - Responsables
         </div>
       </div>
+      <div v-if="$store.getters.contextRole === 'admin'" class="">
+        <router-link to="/dashboard/profiles/invitations/add">
+          <el-button type="primary"> Inviter un utilisateur </el-button>
+        </router-link>
+      </div>
     </div>
     <div class="px-12 mb-12">
       <profiles-menu index="/dashboard/profiles/responsables"></profiles-menu>

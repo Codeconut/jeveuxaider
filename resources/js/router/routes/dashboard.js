@@ -342,6 +342,20 @@ const routeOptions = [
     },
   },
   {
+    path: '/dashboard/profiles/invitations',
+    name: 'DashboardProfilesInvitations',
+    meta: {
+      roles: ['admin'],
+    },
+  },
+  {
+    path: '/dashboard/profiles/invitations/add',
+    name: 'DashboardProfilesInvitationAdd',
+    meta: {
+      roles: ['admin'],
+    },
+  },
+  {
     path: '/dashboard/profiles/referents-regions',
     name: 'DashboardProfilesReferentsRegions',
     meta: {
@@ -397,15 +411,6 @@ const routeOptions = [
         'superviseur',
         'responsable',
       ],
-    },
-  },
-  {
-    path: '/dashboard/profile/:role/add',
-    name: 'DashboardProfileForm',
-    singleName: 'DashboardProfileFormAdd',
-    props: (route) => ({ mode: 'add', role: route.params.role }),
-    meta: {
-      roles: ['admin'],
     },
   },
   {

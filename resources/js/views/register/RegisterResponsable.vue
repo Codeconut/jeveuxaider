@@ -13,7 +13,7 @@
               <h2
                 class="mt-10 lg:mt-24 text-4xl tracking-tight leading-10 font-bold text-white sm:leading-none sm:text-6xl lg:text-5xl xl:text-6xl"
               >
-                Trouvez des bénévoles avec JeVeuxAider
+                Trouvez des bénévoles avec JeVeuxAider.gouv.fr
               </h2>
 
               <ul class="pt-6 lg:pt-14">
@@ -220,7 +220,7 @@
                           target="_blank"
                           class="font-medium text-gray-900 hover:underline"
                         >
-                          charte de JeVeuxAider
+                          charte de JeVeuxAider.gouv.fr
                         </router-link>
                         <br />
                         <span>Déjà inscrit ? </span>
@@ -248,7 +248,7 @@
           class="text-center leading-8 pb-8 text-gray-800 text-sm font-medium text-3xl tracking-tight px-4"
         >
           Plus de <b class="font-bold">4000 organisations</b> ont déjà rejoint
-          JeVeuxAider
+          JeVeuxAider.gouv.fr
         </h3>
         <div class="overflow-hidden">
           <div class="flex flex-wrap items-center justify-center -m-4 sm:-m-8">
@@ -311,12 +311,12 @@
                 ></path>
               </svg>
               <p class="relative">
-                La puissance de mobilisation de JeVeuxAider est impressionnante
-                ! Nous avons reçu 170 nouvelles candidatures de bénévoles en
-                moins de 6 semaines. JeVeuxAider est clairement l’un des
-                meilleurs canaux en termes d’efficacité du temps investi et de
-                nombre de retours. En plus, les bénévoles viennent de toute la
-                France et de divers horizons sociaux.
+                La puissance de mobilisation de JeVeuxAider.gouv.fr est
+                impressionnante ! Nous avons reçu 170 nouvelles candidatures de
+                bénévoles en moins de 6 semaines. JeVeuxAider.gouv.fr est
+                clairement l’un des meilleurs canaux en termes d’efficacité du
+                temps investi et de nombre de retours. En plus, les bénévoles
+                viennent de toute la France et de divers horizons sociaux.
               </p>
             </div>
             <footer class="mt-6">
@@ -364,13 +364,13 @@
               </svg>
               <p class="relative">
                 Pendant la crise de Covid-19, Gers Solidaire s’est engagé avec
-                JeVeuxAider : plus de 100 personnes ont répondu favorablement à
-                notre appel. Nous avons livré 700 masques dans tout le
-                département avec l’aide de JeVeuxAider. Une trentaine de
-                volontaires se sont également engagés auprès des personnages
-                âgées pour les aider dans leur vie quotidienne (appels de
-                courtoisie, livraisons de médicaments, promenade ...). Il s’agit
-                de prendre soin des gens, tout simplement.
+                JeVeuxAider.gouv.fr : plus de 100 personnes ont répondu
+                favorablement à notre appel. Nous avons livré 700 masques dans
+                tout le département avec l’aide de JeVeuxAider.gouv.fr. Une
+                trentaine de volontaires se sont également engagés auprès des
+                personnages âgées pour les aider dans leur vie quotidienne
+                (appels de courtoisie, livraisons de médicaments, promenade
+                ...). Il s’agit de prendre soin des gens, tout simplement.
               </p>
             </div>
             <footer class="mt-6">

@@ -99,7 +99,7 @@
             class="flex-1"
           >
             <el-select
-              v-model="collectivity.zips"
+              v-model="form.zips"
               multiple
               allow-create
               filterable
@@ -126,7 +126,7 @@
       </h2>
       <p class="font-xl text-secondary">
         Vous recevrez un email de confirmation lorsque votre compte aura été
-        validé par l'équipe de JeVeuxAider.
+        validé par l'équipe de JeVeuxAider.gouv.fr.
       </p>
       <div class="">
         <router-link class="mr-4" to="/dashboard">
@@ -158,29 +158,53 @@ export default {
       collectivity: {},
       form: {},
       showSuccessMessage: false,
-      rules: {
-        lieu: {
-          required: true,
-          message: 'Le lieu est requis',
-          trigger: 'blur',
-        },
-        address: {
-          required: true,
-          message: 'Le champ adresse est requis',
-          trigger: 'blur',
-        },
-        city: {
-          required: true,
-          message: 'Le champ ville est requis',
-          trigger: 'blur',
-        },
-        department: {
-          required: true,
-          message: 'Le champ département est requis',
-          trigger: 'blur',
-        },
-      },
     }
+  },
+  computed: {
+    rules() {
+      let rules = {
+        lieu: [
+          {
+            required: true,
+            message: 'Le lieu est requis',
+            trigger: 'blur',
+          },
+        ],
+        address: [
+          {
+            required: true,
+            message: 'Le champ adresse est requis',
+            trigger: 'blur',
+          },
+        ],
+        city: [
+          {
+            required: true,
+            message: 'Le champ ville est requis',
+            trigger: 'blur',
+          },
+        ],
+        department: [
+          {
+            required: true,
+            message: 'Le champ département est requis',
+            trigger: 'blur',
+          },
+        ],
+      }
+
+      if (this.collectivity) {
+        rules.zips = [
+          {
+            required: true,
+            message: 'Veuillez saisir les codes postaux de la commune',
+            trigger: 'blur',
+          },
+        ]
+      }
+
+      return rules
+    },
   },
   created() {
     this.form = this.$store.getters.structure_as_responsable || null
@@ -194,6 +218,7 @@ export default {
           updateStructure(this.structureId, this.form)
             .then(() => {
               if (this.collectivity) {
+                this.collectivity.zips = this.form.zips
                 updateCollectivity(
                   this.collectivity.id,
                   this.collectivity

@@ -509,9 +509,9 @@
                   />
                 </svg>
                 <p class="relative">
-                  La puissance de mobilisation de JeVeuxAider est
+                  La puissance de mobilisation de JeVeuxAider.gouv.fr est
                   impressionnante ! Nous avons reçu 170 nouvelles candidatures
-                  de bénévoles en moins de 6 semaines. JeVeuxAider est
+                  de bénévoles en moins de 6 semaines. JeVeuxAider.gouv.fr est
                   clairement l’un des meilleurs canaux en termes d’efficacité du
                   temps investi et de nombre de retours.
                 </p>

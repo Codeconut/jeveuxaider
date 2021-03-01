@@ -10,6 +10,13 @@
       >
         Responsable : {{ participation.mission.responsable.full_name }}
       </div>
+      <div class="flex flex-wrap mt-2">
+        <router-link
+          :to="`/missions/${participation.mission.id}/${participation.mission.slug}`"
+          class="rounded-full border py-1 px-3 text-sm font-bold text-gray-900 hover:shadow-md"
+          >Consulter la fiche</router-link
+        >
+      </div>
     </section>
 
     <template v-if="!isBenevole">
@@ -150,6 +157,12 @@
         :form="participation"
         @updated="$emit('updated')"
       />
+      <participation-cancel-button
+        v-if="isBenevole && participation.state == 'En attente de validation'"
+        class="mt-3"
+        :form="participation"
+        @updated="$emit('updated')"
+      ></participation-cancel-button>
 
       <hr class="my-6" />
 
@@ -245,7 +258,10 @@
               </svg>
             </div>
             <p class="ml-3">
-              {{ beneficiaryPublic }}
+              {{
+                beneficiaryPublic
+                  | labelFromValue('mission_publics_beneficiaires')
+              }}
             </p>
           </li>
         </ul>
@@ -266,11 +282,13 @@
 
 <script>
 import ParticipationDropdownState from '@/components/ParticipationDropdownState'
+import ParticipationCancelButton from '@/components/ParticipationCancelButton'
 
 export default {
   name: 'ConversationDetail',
   components: {
     ParticipationDropdownState,
+    ParticipationCancelButton,
   },
   props: {
     participation: {

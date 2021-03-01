@@ -44,11 +44,11 @@ const routeOptions = [
     name: 'RegisterResponsableStepOther',
     meta: { requiresAuth: true, layout: 'register-steps' },
   },
-  {
-    path: '/register/invitation',
-    name: 'RegisterInvitation',
-    meta: { requiresAnonymous: true },
-  },
+  // {
+  //   path: '/register/invitation',
+  //   name: 'RegisterInvitation',
+  //   meta: { requiresAnonymous: true },
+  // },
 ]
 
 export default routeOptions.map((route) => {
