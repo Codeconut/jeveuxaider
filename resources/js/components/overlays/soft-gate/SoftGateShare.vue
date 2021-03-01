@@ -6,12 +6,16 @@
       >
         Votre candidature est enregistrée
       </div>
-      <div class="text-gray-500 text-lg lg:text-xl max-w-md mx-auto">
+      <div
+        class="text-gray-500 font-semibold text-lg lg:text-xl max-w-md mx-auto"
+      >
         Et si vous invitiez vos proches à participer eux aussi à cette mission ?
       </div>
     </div>
     <div class="">
-      <div class="text-xl text-center">Partagez la mission autour de vous</div>
+      <div class="text-xl font-semibold text-center">
+        Partagez la mission autour de vous
+      </div>
       <div class="flex justify-center space-x-3 my-10">
         <a
           target="_blank"

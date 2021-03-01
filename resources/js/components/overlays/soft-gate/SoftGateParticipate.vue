@@ -6,13 +6,17 @@
       >
         Proposez votre aide
       </div>
-      <div class="text-gray-500 text-lg lg:text-xl max-w-md mx-auto">
+      <div
+        class="text-gray-500 font-semibold text-lg lg:text-xl max-w-md mx-auto"
+      >
         Vous allez être mis en relation avec
-        <strong>{{
+        <span class="font-extrabold">{{
           $store.getters.missionSelected.responsable.first_name
-        }}</strong
+        }}</span
         >, responsable de la mission chez
-        <strong>{{ $store.getters.missionSelected.structure.name }}</strong
+        <span class="font-extrabold">{{
+          $store.getters.missionSelected.structure.name
+        }}</span
         >.
       </div>
     </div>
@@ -89,8 +93,10 @@ export default {
                   'Votre participation a été enregistrée et est en attente de validation !',
                 type: 'success',
               })
-              this.loading = false
-              this.$emit('next')
+              this.$store.dispatch('user/get').then(() => {
+                this.loading = false
+                this.$emit('next')
+              })
             })
             .catch(() => {
               this.loading = false

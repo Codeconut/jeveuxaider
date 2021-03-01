@@ -6,7 +6,7 @@
       >
         Rejoignez le mouvement !
       </div>
-      <div class="text-gray-500 text-lg lg:text-xl">
+      <div class="text-gray-500 font-semibold text-lg lg:text-xl">
         Créez rapidement votre compte Bénévole
       </div>
     </div>
@@ -97,7 +97,7 @@
         </button>
       </el-form>
 
-      <div class="mt-6 mb-3 bg-gray-50">
+      <div class="mt-6 mb-3">
         <p class="text-xs leading-5 text-gray-500 text-center">
           <span>En m'inscrivant j'accepte la</span>
           <router-link

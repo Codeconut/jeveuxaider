@@ -6,7 +6,7 @@
       >
         {{ form.first_name }}, ravi de vous retrouver !
       </div>
-      <div class="text-gray-500 text-lg lg:text-xl">
+      <div class="text-gray-500 font-semibold text-lg lg:text-xl">
         Renseignez votre mot de passe
       </div>
     </div>

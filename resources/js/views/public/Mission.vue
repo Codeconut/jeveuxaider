@@ -201,53 +201,6 @@
                   />
 
                   <div class="mt-6">
-                    <!-- <template v-if="mission.state">
-                      <template v-if="mission.state == 'Validée'">
-                        <template v-if="mission.has_places_left">
-                          <template v-if="$store.getters.isLogged">
-                            <template v-if="isNotResponsableOfMission">
-                              <el-button
-                                v-if="isAlreadyRegistered"
-                                class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 pb-4 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                                @click="handleClickParticipate"
-                                >Je propose mon aide</el-button
-                              >
-                              <router-link
-                                v-else
-                                to="/user/missions"
-                                class="max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full text-green-800 bg-green-100 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                                >Vous êtes déjà inscrit !</router-link
-                              >
-                            </template>
-                            <template v-else>
-                              <router-link
-                                :to="`/dashboard/mission/${mission.id}`"
-                                class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 pb-4 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                                >Tableau de bord</router-link
-                              >
-                            </template>
-                          </template>
-
-                          <template v-else>
-                            <button
-                              class="font-bold max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 pb-4 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                              @click="dialogProposerAide = true"
-                            >
-                              Proposer votre aide
-                            </button>
-                          </template>
-                        </template>
-                      </template>
-
-                      <template v-else>
-                        <span
-                          class="max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 pb-4 border border-transparent text-2xl lg:text-xl leading-6 font-medium rounded-full bg-orange-500 text-white"
-                        >
-                          {{ mission.state }}
-                        </span>
-                      </template>
-                    </template> -->
-
                     <ButtonJeProposeMonAide :mission="mission" />
                   </div>
 
@@ -878,19 +831,6 @@ export default {
         )
         .toLowerCase()
       return `L'${status}`
-    },
-    hasParticipation() {
-      return this.$store.getters.profile.participations.filter(
-        (participation) =>
-          participation.mission_id == this.id &&
-          participation.state != 'Annulée'
-      )
-    },
-    isNotResponsableOfMission() {
-      return this.$store.getters.profile.id != this.mission.responsable_id
-    },
-    isAlreadyRegistered() {
-      return this.hasParticipation.length > 0 ? false : true
     },
     responseTime() {
       let daysDelay = this.$options.filters.daysFromTimestamp(
