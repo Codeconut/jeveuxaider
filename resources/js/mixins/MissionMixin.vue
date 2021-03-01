@@ -23,9 +23,17 @@ export default {
   },
   methods: {
     defaultThumbnail(e) {
-      // @todo vraie image par défaut
-      e.target.src = '/images/domaines/3_3.jpg'
-      e.target.srcset = '/images/domaines/3_3@2x.jpg 2x'
+      let file = 'card-thumbnail-default'
+
+      if (
+        (this.domaine_id && this.domaine_id == 3) ||
+        this.mission.domaine_name == 'Santé pour tous'
+      ) {
+        file = 'templates/sante_pour_tous'
+      }
+
+      e.target.src = `/images/${file}.jpg`
+      e.target.srcset = `/images/${file}@2x.jpg 2x`
     },
   },
 }
