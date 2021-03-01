@@ -249,7 +249,8 @@
                             v-model="form.service_civique"
                             @change="handleServiceCiviqueChange"
                           >
-                            Je suis volontaire en Service Civique
+                            Cochez si vous êtes déjà volontaire en Service
+                            Civique
                           </el-checkbox>
                         </el-form-item>
                       </div>
