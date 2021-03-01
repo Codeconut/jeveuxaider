@@ -94,6 +94,28 @@
           S'inscrire
         </button>
       </el-form>
+
+      <div class="mt-6 mb-3 bg-gray-50">
+        <p class="text-xs leading-5 text-gray-500 text-center">
+          <span>En m'inscrivant j'accepte la</span>
+          <router-link
+            to="/politique-de-confidentialite"
+            target="_blank"
+            class="font-medium text-gray-900 hover:underline"
+          >
+            politique de confidentialité
+          </router-link>
+          <br />
+          <span>et la</span>
+          <router-link
+            to="/charte-reserve-civique"
+            target="_blank"
+            class="font-medium text-gray-900 hover:underline"
+          >
+            charte de JeVeuxAider.gouv.fr
+          </router-link>
+        </p>
+      </div>
     </div>
   </div>
 </template>

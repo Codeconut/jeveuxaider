@@ -11,43 +11,50 @@
     <div class="">
       <div class="text-xl text-center">Partagez la mission autour de vous</div>
       <div
-        class="flex flex-wrap text-gray-900 font-semibold justify-center space-x-3 my-6"
+        class="flex flex-wrap text-gray-900 font-semibold justify-center space-x-3 my-10"
       >
-        <div
-          class="input-shadow bg-white h-24 w-24 rounded-full flex justify-center items-center"
+        <a
+          target="_blank"
+          :href="`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}${$router.currentRoute.fullPath}`"
+          class="input-shadow bg-white h-24 w-24 rounded-full flex justify-center items-center cursor-pointer hover:shadow-lg"
         >
           <img
             src="/images/icones/share-facebook.svg"
             alt="Partagez la mission sur Facebook"
           />
-        </div>
-        <div
-          class="input-shadow bg-white h-24 w-24 rounded-full flex justify-center items-center"
+        </a>
+        <a
+          target="_blank"
+          :href="`https://twitter.com/intent/tweet?url=${baseUrl}${$router.currentRoute.fullPath}`"
+          class="input-shadow bg-white h-24 w-24 rounded-full flex justify-center items-center cursor-pointer hover:shadow-lg"
         >
           <img
             src="/images/icones/share-twitter.svg"
             alt="Partagez la mission sur Twitter"
           />
-        </div>
-        <div
-          class="input-shadow bg-white h-24 w-24 rounded-full flex justify-center items-center"
+        </a>
+        <a
+          target="_blank"
+          :href="`https://www.linkedin.com/shareArticle?mini=true&url=${baseUrl}${$router.currentRoute.fullPath}`"
+          class="input-shadow bg-white h-24 w-24 rounded-full flex justify-center items-center cursor-pointer hover:shadow-lg"
         >
           <img
             src="/images/icones/share-linkedin.svg"
             alt="Partagez la mission sur Linkedin"
           />
-        </div>
-        <div
-          class="input-shadow bg-white h-24 w-24 rounded-full flex justify-center items-center"
+        </a>
+        <a
+          :href="`mailto:?&subject=${$store.getters.missionSelected.name}&body=${baseUrl}${$router.currentRoute.fullPath}`"
+          class="input-shadow bg-white h-24 w-24 rounded-full flex justify-center items-center cursor-pointer hover:shadow-lg"
         >
           <img
-            src="/images/icones/share-whatsapp.svg"
-            alt="Partagez la mission sur Whatsapp"
+            src="/images/icones/share-mail.svg"
+            alt="Partagez la mission par mail"
           />
-        </div>
+        </a>
       </div>
       <el-button
-        class="font-bold text-gray-500 max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-2xl lg:text-xl leading-6 rounded-full bg-white focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+        class="font-bold text-gray-500 max-w-sm mx-auto w-full flex items-center justify-center px-5 py-3 border border-transparent text-2xl lg:text-xl leading-6 rounded-full bg-white focus:outline-none focus:shadow-outline transition duration-150 ease-in-out hover:shadow-lg"
         @click.prevent="onSkip"
       >
         Passer
@@ -60,7 +67,9 @@
 export default {
   name: 'SoftGateShare',
   data() {
-    return {}
+    return {
+      baseUrl: process.env.MIX_API_BASE_URL,
+    }
   },
   methods: {
     onSkip() {
