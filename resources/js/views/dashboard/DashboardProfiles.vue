@@ -8,43 +8,9 @@
         <div class="mb-8 font-bold text-2xl text-gray-800">Utilisateurs</div>
       </div>
       <div v-if="$store.getters.contextRole === 'admin'" class="">
-        <el-dropdown>
+        <router-link to="/dashboard/profiles/invitations/add">
           <el-button type="primary"> Inviter un utilisateur </el-button>
-          <el-dropdown-menu type="primary">
-            <router-link
-              :to="{
-                name: 'DashboardProfileFormAdd',
-                params: { role: 'superviseur' },
-              }"
-            >
-              <el-dropdown-item>Superviseur national</el-dropdown-item>
-            </router-link>
-            <router-link
-              :to="{
-                name: 'DashboardProfileFormAdd',
-                params: { role: 'referent' },
-              }"
-            >
-              <el-dropdown-item>Référent départemental</el-dropdown-item>
-            </router-link>
-            <router-link
-              :to="{
-                name: 'DashboardProfileFormAdd',
-                params: { role: 'referent_regional' },
-              }"
-            >
-              <el-dropdown-item>Référent régional</el-dropdown-item>
-            </router-link>
-            <router-link
-              :to="{
-                name: 'DashboardProfileFormAdd',
-                params: { role: 'analyste' },
-              }"
-            >
-              <el-dropdown-item>Datas analyste</el-dropdown-item>
-            </router-link>
-          </el-dropdown-menu>
-        </el-dropdown>
+        </router-link>
       </div>
     </div>
     <div v-if="$store.getters.contextRole === 'admin'" class="px-12 mb-12">
