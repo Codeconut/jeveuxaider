@@ -9,6 +9,7 @@
         :srcset="`${thumbnail.x2} 2x`"
         :alt="mission.domaine_name"
         class="w-full h-full object-cover"
+        @error="defaultThumbnail($event)"
       />
       <div class="pill absolute m-4 top-0 right-0">
         <template

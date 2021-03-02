@@ -102,6 +102,7 @@
               :srcset="`/images/templates/${template.id}@2x.jpg 2x`"
               width="125px"
               class="object-cover h-full"
+              @error="defaultThumbnail($event)"
             />
           </div>
 
@@ -197,12 +198,14 @@
 import { fetchMissionTemplates, fetchTags } from '@/api/app'
 import { getStructure } from '@/api/structure'
 import MissionForm from '@/views/dashboard/DashboardMissionForm'
+import MissionMixin from '@/mixins/MissionMixin'
 
 export default {
   name: 'DashboardMissionFormAdd',
   components: {
     MissionForm,
   },
+  mixins: [MissionMixin],
   props: {
     structureId: {
       type: Number,
