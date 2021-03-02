@@ -185,7 +185,7 @@ export default {
           },
           {
             min: 5,
-            max: 5,
+            max: 6,
             message: 'Format erroné',
             trigger: 'blur',
           },
