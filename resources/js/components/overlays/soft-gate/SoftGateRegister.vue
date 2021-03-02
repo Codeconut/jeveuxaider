@@ -201,6 +201,11 @@ export default {
             message: 'Format incorrect',
             trigger: 'blur',
           },
+          {
+            min: 10,
+            message: 'Format incorrect',
+            trigger: 'blur',
+          },
         ],
         password: [
           {
