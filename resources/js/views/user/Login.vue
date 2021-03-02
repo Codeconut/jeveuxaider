@@ -80,15 +80,11 @@
                 />
               </el-form-item>
               <div class="pt-4">
-                <router-link to="/password/forgot">
-                  <div class="text-sm leading-5">
-                    <router-link
-                      to="/password/forgot"
-                      class="font-medium text-blue-800 hover:text-blue-900 focus:outline-none focus:underline transition ease-in-out duration-150"
-                    >
-                      Mot de passe perdu ?
-                    </router-link>
-                  </div>
+                <router-link
+                  to="/password/forgot"
+                  class="text-sm leading-5 font-medium text-blue-800 hover:text-blue-900 focus:outline-none focus:underline transition ease-in-out duration-150"
+                >
+                  Mot de passe perdu ?
                 </router-link>
               </div>
             </el-form>

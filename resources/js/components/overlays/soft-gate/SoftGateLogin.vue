@@ -32,7 +32,7 @@
             />
           </div>
         </el-form-item>
-        <el-form-item prop="password" class="mb-5">
+        <el-form-item prop="password" class="mb-1">
           <input
             v-model="form.password"
             :autofocus="true"
@@ -41,6 +41,16 @@
             placeholder="Votre mot de passe"
           />
         </el-form-item>
+
+        <div class="mb-5 text-center">
+          <router-link
+            :to="`/password/forgot?email=${form.email}`"
+            target="_blank"
+            class="text-sm leading-5 font-medium text-gray-400 hover:text-gray-900 focus:outline-none focus:underline transition ease-in-out duration-150"
+          >
+            Mot de passe perdu ?
+          </router-link>
+        </div>
 
         <el-button
           :loading="loading"

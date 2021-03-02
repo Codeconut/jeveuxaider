@@ -88,7 +88,7 @@ export default {
       loading: false,
       submitted: false,
       form: {
-        email: '',
+        email: this.$route.query.email ? this.$route.query.email : '',
       },
       rules: {
         email: [
